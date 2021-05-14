@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-// import * as d3 from 'd3';
 import BottomNav from './Components/Navigation/BottomNav.jsx';
 import {
     BrowserRouter as Router,
@@ -30,7 +29,6 @@ import space2 from './themes/space/space2.jpg';
 // *EARTH* //
 import earth from './themes/earth/earth.jpg';
 import forest from './themes/earth/forest.jpg';
-import treetopsAboveEDIT from './themes/earth/treetopsAboveEDIT.jpg';
 import treetopsAbove from './themes/earth/treetopsAbove.jpg';
 import treetopsBelow from './themes/earth/treetopsBelow.jpg';
 import leafBorder from './themes/earth/leafBorder.jpg';

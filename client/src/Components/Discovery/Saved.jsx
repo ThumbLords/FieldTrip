@@ -46,12 +46,8 @@ const Saved = ({ saved, font, getSaved, addResource }) => {
   const newSaved = Array.from(new Set(filteredSave.map(resource => resource.title))).map(title => filteredSave.find(resource => resource.title === title));
 
   const deleteSaved = async (title) => {
-    console.log(title);
     try{
       await axios.delete('/delete', { data: { title: title } })
-      // if (res.data.success) {
-      //   alert(res.data.message);
-      // }
       getSaved();
     } catch(error) {
       console.error(error);
