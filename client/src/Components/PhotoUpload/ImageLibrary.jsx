@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
 import {Cloudinary} from 'cloudinary-core';
 const cloudinaryCore = new Cloudinary({cloud_name: 'dntf1x5a6'});
@@ -30,12 +30,13 @@ const ImageLibraryContainer = styled.div`
 `
 
 
-const ImageLibrary = ({imageIds, loadImages}) => {
+const ImageLibrary = ({imageIds, loadImages, clicked}) => {
 // console.log('LAST HURRAY imageIds', imageIds)
+
 
 useEffect(() => {
   loadImages()
-}, []);
+}, [clicked]);
 
   return(
     <ImageLibraryContainer>

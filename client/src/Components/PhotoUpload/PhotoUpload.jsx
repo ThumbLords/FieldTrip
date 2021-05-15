@@ -31,6 +31,7 @@ const PhotoUpload = ({font}) => {
   const [selectedFile, useSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
   const [imageIds, setImageIds] = useState();
+  const [clicked, setClicked] = useState(false)
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -50,6 +51,7 @@ const PhotoUpload = ({font}) => {
     if(!previewSource) return;
     uploadImage(previewSource);
     setPreviewSource('');
+    setClicked(!clicked);
   }
 
   const uploadImage = async (base64EncodedImage) => {
@@ -95,7 +97,7 @@ const loadImages = () => {
       {previewSource && (
         <img src={previewSource} alt="chosen" style={{height: '150px'}}/>
       )}
-      <ImageLibrary imageIds={imageIds} loadImages={loadImages}/>
+      <ImageLibrary imageIds={imageIds} loadImages={loadImages} setClicked={setClicked} clicked={clicked}/>
     </div>
   )
 }
