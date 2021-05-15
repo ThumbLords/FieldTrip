@@ -30,21 +30,37 @@ const ImageLibraryContainer = styled.div`
 `
 
 
-const ImageLibrary = ({imageIds, loadImages, clicked}) => {
-// console.log('LAST HURRAY imageIds', imageIds)
+const ImageLibrary = ({images, setImages, loadImages, clicked}) => {
+console.log('clicked', clicked);
+
+const filterImages = (images) => {
+  //filter images before map
+  if(images){
+   return images.filter((v,i,a)=>a.findIndex(t=>(t.etag === v.etag))===i)
+  }
+};
 
 
 useEffect(() => {
   loadImages()
+  // setImages((previous) => {
+  //   return filterImages(images)
+  // })
+  // filterImages(images);
+}, []);
+
+useEffect(() => {
+  loadImages()
+  // filterImages(images);
 }, [clicked]);
 
   return(
     <ImageLibraryContainer>
       <h3>Community Photo Board</h3>
-        {imageIds ?
-        imageIds.map((imageId, i) => (
+        {images ?
+        filterImages(images).map((image, i) => (
           <div className="ImageContainer"  key={i}>
-            <img src={cloudinaryCore.url(`http://res.cloudinary.com/dntf1x5a6/image/upload/${imageId}.jpg`)}/>
+            <img src={cloudinaryCore.url(`http://res.cloudinary.com/dntf1x5a6/image/upload/${image.public_id}.jpg`)}/>
           </div >)
          )
       : <p>No images to view</p>}

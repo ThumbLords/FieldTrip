@@ -30,7 +30,7 @@ const PhotoUpload = ({font}) => {
   const [fileInputState, setFileInputState] = useState('');
   const [selectedFile, useSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
-  const [imageIds, setImageIds] = useState();
+  const [images, setImages] = useState();
   const [clicked, setClicked] = useState(false)
 
   const handleFileInputChange = (e) => {
@@ -73,7 +73,7 @@ const loadImages = () => {
   axios.get('/api/images')
   .then(({data}) => {
     console.log('UPLOAD IMAGE DATA', data);
-    setImageIds(data);
+    setImages(data);
   })
     .catch ((error) => {
     console.log('image upload threw an error:', error)
@@ -82,7 +82,7 @@ const loadImages = () => {
 
     useEffect(()=> {
       loadImages();
-    }, [])
+    }, [clicked])
 
   return(
     <div>
@@ -97,7 +97,7 @@ const loadImages = () => {
       {previewSource && (
         <img src={previewSource} alt="chosen" style={{height: '150px'}}/>
       )}
-      <ImageLibrary imageIds={imageIds} loadImages={loadImages} setClicked={setClicked} clicked={clicked}/>
+      <ImageLibrary images={images} setImages={setImages} loadImages={loadImages} setClicked={setClicked} clicked={clicked}/>
     </div>
   )
 }

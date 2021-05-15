@@ -339,9 +339,8 @@ app.post('/saved', (req, res) => {
         .execute();
 
         const publicIds = resources.map( file => {
-          // console.log('----file------', file)
-          return file.public_id});
-          // console.log('publicIds------------', publicIds, )
+          console.log('----file------', file)
+          return {public_id: file.public_id, etag: file.etag}});
         res.status(200).json(publicIds);
     } catch(error) {
       console.log('Error was thrown: ', error)
