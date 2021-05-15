@@ -3,7 +3,9 @@ import { Carousel, Row, Col, Jumbotron } from 'react-bootstrap/';
 import axios from 'axios';
 import styled from 'styled-components';
 import YoutubeEmbed from './YoutubeEmbed.jsx';
-
+import { makeStyles } from '@material-ui/core/styles';
+import FavoriteSharpIcon from '@material-ui/icons/FavoriteSharp';
+import IconButton from '@material-ui/core/IconButton';
 // const Img = styled.div`
 //     height: 100vh;
 //     width: 100%;
@@ -32,11 +34,22 @@ const Caption= styled(Jumbotron)`
     border: 3px;
     border-color: whitesmoke;
     padding: 0 1rem;
+`;
 
-`
-const Documentary = ({ addResource, discView, search }) => {
+const useStyles = makeStyles((theme) => ({
+  saved:{
+    bottom: '7px',
+    right: 0,
+    position: 'absolute',
+  },
+}));
+
+const Documentary = ({ addResource, discView, search, font, saved, addSaved }) => {
     const [docs, setDocs] = useState([]);
+    const [iconColor, setIconColor] = useState('whitesmoke');
     const query = `${search}`;
+    const classes = useStyles();
+
     const getDocs = async (query) => {
         await axios.get(`/youTube/${query}`)
         .then(({data}) => {
@@ -56,35 +69,32 @@ const Documentary = ({ addResource, discView, search }) => {
         <div className="youtube">
             <Carousel fade style={{marginTop: '2rem' }}>
                 {docs.map((doc, i) => (
-                    <Carousel.Item className="mb-5 m5-5"
-                    key={i} style={{ maxWidth: '60%', left: '20%', height: 'auto' }}
+                    <Carousel.Item
+                        className="mb-5 m5-5"
+                        key={i}
+                        style={{ maxWidth: '60%', left: '20%', height: 'auto' }}
                     >
-                            {/* <Img>
-                                <img className="mx-auto"
-                                src={doc.snippet.thumbnails.high.url}/>
-                            </Img> */}
-                            <YoutubeEmbed embedId={doc.id.videoId} kind='video'/>
-                            <Caption>
-                                    <h2>{doc.snippet.title}</h2>
-                                    <p>Click
-                                        <a
-                                            href={`https://www.youtube.com/embed/${doc.id.videoId}`}
-                                            target="_blank"
-                                            onClick={() => { addResource(doc, 'documentary'); }}
-                                        > Here</a>
-                                        to watch on YouTube.
-                                    </p>
-                            </Caption>
-                            {/* <Caption>
-                                    <h2>{doc.snippet.title}</h2>
-                                    <p>Watch Documentary
-                                        <a
-                                            href={`https://www.youtube.com/embed/${doc.id.videoId}`}
-                                            target="_blank"
-                                            onClick={() => { addResource(doc, 'documentary'); }}
-                                        > Here</a>
-                                    </p>
-                            </Caption> */}
+                        <YoutubeEmbed embedId={doc.id.videoId} kind='video'/>
+                        <Caption>
+                                <h2>{doc.snippet.title}</h2>
+                                <p>Click
+                                    <a
+                                        href={`https://www.youtube.com/embed/${doc.id.videoId}`}
+                                        target="_blank"
+                                        onClick={() => { addResource(doc, 'documentary'); }}
+                                    > Here</a>
+                                    to watch on YouTube.
+                                </p>
+                                <IconButton
+                                    onClick={() => {
+                                        addSaved(doc, 'documentary');
+                                        setIconColor('rgb(251 58 139)');
+                                    }}
+                                    className={classes.saved}
+                                >
+                                    <FavoriteSharpIcon style={{ color: iconColor }}/>
+                                </IconButton>
+                        </Caption>
                     </Carousel.Item>
                     ))}
             </Carousel>

@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     maxWidth: '17%',
     flexGrow: 1,
     backgroundColor: 'rgb(9, 11, 23)',
-    // marginRight: '34%',
   },
   arrows: {
     color: '#736bfb',
@@ -34,7 +33,6 @@ const ThemeStepper = ({ setStepperCount, themeLength, theme }) => {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    // console.log(earthThemes[activeStep])
   };
 
   useEffect(() => {
@@ -57,7 +55,7 @@ const ThemeStepper = ({ setStepperCount, themeLength, theme }) => {
           activeStep={activeStep}
           className={classes.root}
           nextButton={
-            <Button size="medium" onClick={handleNext} disabled={activeStep === themeLength()} className={classes.arrows}>
+            <Button size="medium" onClick={handleNext} disabled={activeStep === (themeLength() - 1)} className={classes.arrows}>
               {usetheme.direction === 'rtl' ? <ArrowLeftSharpIcon id='arrows'/> : <ArrowRightSharpIcon id='arrows'/>}
             </Button>
           }
