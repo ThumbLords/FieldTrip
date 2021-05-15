@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components';
 import {Cloudinary} from 'cloudinary-core';
 const cloudinaryCore = new Cloudinary({cloud_name: 'dntf1x5a6'});
@@ -30,20 +30,19 @@ const ImageLibraryContainer = styled.div`
 `
 
 
-const ImageLibrary = ({imageIds, loadImages}) => {
-// console.log('LAST HURRAY imageIds', imageIds)
+const ImageLibrary = ({images, setImages, loadImages, clicked}) => {
 
-useEffect(() => {
-  loadImages()
-}, []);
+  useEffect(()=> {
+    loadImages();
+  }, [clicked])
 
   return(
     <ImageLibraryContainer>
       <h3>Community Photo Board</h3>
-        {imageIds ?
-        imageIds.map((imageId, i) => (
+        {images ?
+        images.map((image, i) => (
           <div className="ImageContainer"  key={i}>
-            <img src={cloudinaryCore.url(`http://res.cloudinary.com/dntf1x5a6/image/upload/${imageId}.jpg`)}/>
+            <img src={cloudinaryCore.url(`http://res.cloudinary.com/dntf1x5a6/image/upload/${image.public_id}.jpg`)}/>
           </div >)
          )
       : <p>No images to view</p>}
