@@ -31,34 +31,16 @@ const ImageLibraryContainer = styled.div`
 
 
 const ImageLibrary = ({images, setImages, loadImages, clicked}) => {
-console.log('clicked', clicked);
 
-const filterImages = (images) => {
-  //filter images before map
-  if(images){
-   return images.filter((v,i,a)=>a.findIndex(t=>(t.etag === v.etag))===i)
-  }
-};
-
-
-useEffect(() => {
-  loadImages()
-  // setImages((previous) => {
-  //   return filterImages(images)
-  // })
-  // filterImages(images);
-}, []);
-
-useEffect(() => {
-  loadImages()
-  // filterImages(images);
-}, [clicked]);
+  useEffect(()=> {
+    loadImages();
+  }, [clicked])
 
   return(
     <ImageLibraryContainer>
       <h3>Community Photo Board</h3>
         {images ?
-        filterImages(images).map((image, i) => (
+        images.map((image, i) => (
           <div className="ImageContainer"  key={i}>
             <img src={cloudinaryCore.url(`http://res.cloudinary.com/dntf1x5a6/image/upload/${image.public_id}.jpg`)}/>
           </div >)

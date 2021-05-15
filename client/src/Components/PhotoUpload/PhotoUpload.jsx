@@ -62,8 +62,11 @@ const PhotoUpload = ({font}) => {
         body: JSON.stringify({data: base64EncodedImage}),
         headers: {'Content-type': 'application/json'}
       })
-      console.log('just above loadimages')
-      loadImages();
+      .then(() => {
+        console.log('just above loadimages')
+        loadImages();
+
+      })
     } catch (error) {
       console.log(error);
     }
@@ -72,17 +75,25 @@ const PhotoUpload = ({font}) => {
 const loadImages = () => {
   axios.get('/api/images')
   .then(({data}) => {
-    console.log('UPLOAD IMAGE DATA', data);
-    setImages(data);
+    let result = filterImages(data)
+    console.log('UPLOAD IMAGE DATA', result);
+    setImages(result);
   })
     .catch ((error) => {
     console.log('image upload threw an error:', error)
   })
 }
 
-    useEffect(()=> {
-      loadImages();
-    }, [clicked])
+const filterImages = (images) => {
+  //filter images before map
+  if(images){
+   return images.filter((v,i,a)=>a.findIndex(t=>(t.etag === v.etag))===i)
+  }
+};
+
+  useEffect(()=> {
+    loadImages();
+  }, [clicked])
 
   return(
     <div>
