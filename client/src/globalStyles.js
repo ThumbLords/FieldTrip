@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Spartan', sans-serif;
     background-color: rgb(9, 11, 23);
     color: whitesmoke;
-    min-height: 110vh;
+    height: 110vh;
   }
   //test
   header{
