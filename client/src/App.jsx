@@ -39,7 +39,9 @@ import contrast from './themes/earth/contrast.jpg';
 // !HISTORY! //
 import dinos from './themes/history/dinos.jpg';
 import dinoBones from './themes/history/dinoBones.jpg';
-import dinoTri from './themes/history/dinoTri.jpg';
+import coliseum from './themes/history/coliseum.jpg';
+import columns from './themes/history/columns.jpg';
+
 
 
 const App = () => {
@@ -57,7 +59,7 @@ const App = () => {
     // const [nasaPic, setNasaPic] = useState();
 
     const earthThemes = [veryGreen, contrast, treetopsAbove, forest, treetopsBelow, leafBorder, earth];
-    const historyThemes = [dinos, dinoBones, dinoTri];
+    const historyThemes = [columns, dinos, coliseum, dinoBones];
     const spaceThemes = [rainbowStars, spaceBlue, rainbowStars2, gradientMoon, space2, pinkStars, launch];
 
     const themeLength = () => {

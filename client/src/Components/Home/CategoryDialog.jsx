@@ -52,8 +52,8 @@ const CategoryDialogBuilder = (props) => {
       <DialogTitle id="simple-dialog-title">Choose a category!</DialogTitle>
       <List>
         {categories.map((category) => (
-          <>
-            <ListItem button onClick={() => handleListItemClick(category.name, category.theme, category.searchTerm)} key={category.name}>
+          <div key={category.name}>
+            <ListItem button onClick={() => handleListItemClick(category.name, category.theme, category.searchTerm)}>
               <ListItemAvatar>
                 <Avatar className={classes.avatar}>
                   {category.icon}
@@ -62,7 +62,7 @@ const CategoryDialogBuilder = (props) => {
               <ListItemText primary={category.name} />
             </ListItem>
             <Divider variant="inset" component="li" />
-          </>
+          </div>
         ))}
       </List>
     </Dialog>
@@ -73,7 +73,7 @@ CategoryDialogBuilder.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   selectedValue: PropTypes.string.isRequired,
-  selectedTheme: PropTypes.string.isRequired,
+  // selectedTheme: PropTypes.string.isRequired,
   discView: PropTypes.string.isRequired,
 };
 
