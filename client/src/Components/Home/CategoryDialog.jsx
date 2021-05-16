@@ -61,7 +61,10 @@ const CategoryDialogBuilder = (props) => {
               </ListItemAvatar>
               <ListItemText primary={category.name} />
             </ListItem>
+            { category.name === 'General Science' ?
+              null :
             <Divider variant="inset" component="li" />
+            }
           </div>
         ))}
       </List>

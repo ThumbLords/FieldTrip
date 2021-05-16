@@ -88,5 +88,26 @@ const GlobalStyles = createGlobalStyle`
     .container, .container-lg, .container-md, .container-sm, .container-xl{
       max-width: 80%;
     }
+    .MuiDialog-paperWidthSm{
+      /* max-width: 600px;
+      opacity: 85%;
+      background-color: whitesmoke;
+      box-shadow: 0px 0px 15px 5px #736bfb;
+      box-shadow: 0px 0px 15px 5px rgb(115, 107, 251, 0.75); */
+      max-width: 600px;
+      opacity: 85%;
+      background-color: rgb(9, 11, 23, 0.87);
+      box-shadow: 0px 0px 13px 1px ghostwhite;
+      color: ghostwhite;
+    }
+    .MuiDivider-inset{
+      margin-left: 90px;
+      background-color: ghostwhite;
+      opacity: 0.45;
+    }
+    .makeStyles-avatar-16{
+      color: rgb(9, 11, 23);
+      background-color: ghostwhite;
+    }
 `;
 export default GlobalStyles;
