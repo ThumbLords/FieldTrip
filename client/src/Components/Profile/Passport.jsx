@@ -1,8 +1,6 @@
 import React from 'react';
 import Stamp from './Stamp.jsx';
-import Badge from './Badge.jsx';
 import styled from 'styled-components';
-
 
 const Container = styled.div`
   background-color: lavender;
@@ -26,6 +24,8 @@ h3{
 }
 `
 const Passport = ({stamps, badges}) => {
+  // console.log(badges, 'BADGES on PASSPORT');
+  
   return (
 
     <>
@@ -35,11 +35,6 @@ const Passport = ({stamps, badges}) => {
         <p>Explore on the discovery tab to earn stamps!</p> :
         stamps.reverse().map((stamp, i) => <Stamp stamp={stamp} key={i}/>)}
       </Container>
-      {/* <Container>
-        <h3>Badges</h3>
-        {badges.reverse().map((badge, i) => <Badge badge={badge}
-        key={i}/>)}
-      </Container> */}
     </>
   );
 };

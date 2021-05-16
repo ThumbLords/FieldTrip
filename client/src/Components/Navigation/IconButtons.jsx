@@ -10,12 +10,6 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
-  checked: {
-
-  },
-  unchecked: {
-
-  }
 }));
 
 const IconButtons = ({ clicked, handleClick }) => {

@@ -30,7 +30,8 @@ const PhotoUpload = ({font}) => {
   const [fileInputState, setFileInputState] = useState('');
   const [selectedFile, useSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
-  const [imageIds, setImageIds] = useState();
+  const [images, setImages] = useState();
+  const [clicked, setClicked] = useState(false)
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -50,6 +51,7 @@ const PhotoUpload = ({font}) => {
     if(!previewSource) return;
     uploadImage(previewSource);
     setPreviewSource('');
+    setClicked(!clicked);
   }
 
   const uploadImage = async (base64EncodedImage) => {
@@ -60,8 +62,11 @@ const PhotoUpload = ({font}) => {
         body: JSON.stringify({data: base64EncodedImage}),
         headers: {'Content-type': 'application/json'}
       })
-      console.log('just above loadimages')
-      loadImages();
+      .then(() => {
+        console.log('just above loadimages')
+        loadImages();
+
+      })
     } catch (error) {
       console.log(error);
     }
@@ -70,17 +75,25 @@ const PhotoUpload = ({font}) => {
 const loadImages = () => {
   axios.get('/api/images')
   .then(({data}) => {
-    console.log('UPLOAD IMAGE DATA', data);
-    setImageIds(data);
+    let result = filterImages(data)
+    console.log('UPLOAD IMAGE DATA', result);
+    setImages(result);
   })
     .catch ((error) => {
     console.log('image upload threw an error:', error)
   })
 }
 
-    useEffect(()=> {
-      loadImages();
-    }, [])
+const filterImages = (images) => {
+  //filter images before map
+  if(images){
+   return images.filter((v,i,a)=>a.findIndex(t=>(t.etag === v.etag))===i)
+  }
+};
+
+  useEffect(()=> {
+    loadImages();
+  }, [clicked])
 
   return(
     <div>
@@ -95,7 +108,7 @@ const loadImages = () => {
       {previewSource && (
         <img src={previewSource} alt="chosen" style={{height: '150px'}}/>
       )}
-      <ImageLibrary imageIds={imageIds} loadImages={loadImages}/>
+      <ImageLibrary images={images} setImages={setImages} loadImages={loadImages} setClicked={setClicked} clicked={clicked}/>
     </div>
   )
 }
