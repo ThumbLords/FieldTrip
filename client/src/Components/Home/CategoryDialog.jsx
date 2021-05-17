@@ -26,6 +26,13 @@ const categories = [
 ];
 
 const useStyles = makeStyles({
+  // root:{
+  //   maxWidth: '600px',
+  //   opacity: '87%',
+  //   backgroundColor: 'rgb(9, 11, 23)',
+  //   boxShadow:' 0px 0px 13px 1px ghostwhite',
+  //   color: 'ghostwhite',
+  // },
   avatar: {
     backgroundColor:' rgba(0, 0, 0, 0.851)',
     color: 'whitesmoke',

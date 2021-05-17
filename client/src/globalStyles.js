@@ -94,11 +94,13 @@ const GlobalStyles = createGlobalStyle`
       background-color: whitesmoke;
       box-shadow: 0px 0px 15px 5px #736bfb;
       box-shadow: 0px 0px 15px 5px rgb(115, 107, 251, 0.75); */
+
       max-width: 600px;
-      opacity: 85%;
-      background-color: rgb(9, 11, 23, 0.87);
+      /* opacity: 87%; */
+      background-color: rgb(9, 11, 23);
       box-shadow: 0px 0px 13px 1px ghostwhite;
       color: ghostwhite;
+      border-radius: 10px;
     }
     .MuiDivider-inset{
       margin-left: 90px;
@@ -108,6 +110,9 @@ const GlobalStyles = createGlobalStyle`
     .makeStyles-avatar-16{
       color: rgb(9, 11, 23);
       background-color: ghostwhite;
+    }
+    .MuiSelect-icon{
+      color: ghostwhite;
     }
 `;
 export default GlobalStyles;

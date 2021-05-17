@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     display:"flex",
     justifyContent: "center",
     alignItems: "center"
-  }
+  },
 }));
 
  const DialogSelectAvatar = ({avatar, setAvatar, saveAvatar}) => {
@@ -54,20 +54,22 @@ const useStyles = makeStyles((theme) => ({
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen} style={{margin: '15px auto', display: "flex"}}>Choose an Avatar</Button>
-      <Dialog disableBackdropClick disableEscapeKeyDown open={open} onClose={handleClose}>
-        <DialogTitle>Fill the form</DialogTitle>
+      <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgb(115, 107, 251, .75)', borderRadius: '10px', backdropFilter: 'blur(10px)'}}>Choose Your Avatar</Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Select a New Avatar!</DialogTitle>
         <DialogContent>
           <form className={classes.container}>
             <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="demo-dialog-native">Choose an Avatar</InputLabel>
+              {/* <InputLabel htmlFor="demo-dialog-native" style={{color: 'ghostwhite', padding: '5px'}}>Avatars</InputLabel> */}
               <Select
+                style={{backgroundColor: 'rgb(9,11,23)', color: 'ghostwhite', opacity: '100%', borderRadius: '10px', boxShadow: '0px 0px 13px 1px ghostwhite'}}
+                // style={{borderRadius: '10px'}}
                 native
                 value={avatar}
                 onChange={handleChange}
                 input={<Input id="demo-dialog-native" />}
               >
-                <option aria-label="None" value="" />
+                <option aria-label="None" value=""/>
                 <option value={astro}>Astro Jelly</option>
                 <option value={treeHugger}>Don't worry, tree happy</option>
                 <option value={googley}>Googley Cactus</option>
@@ -78,10 +80,10 @@ const useStyles = makeStyles((theme) => ({
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} style={{color: 'ghostwhite'}}>
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} style={{color: 'ghostwhite'}}>
             Ok
           </Button>
         </DialogActions>

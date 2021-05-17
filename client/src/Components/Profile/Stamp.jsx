@@ -45,8 +45,8 @@ const Img = styled.div`
 }
 
 .flip-card-back {
-  background-color: #2980b9;
-  color: white;
+  background-color: rgba(115, 107, 251, .8);
+  color: ghostwhite;
   border-radius: 10px;
   transform: rotateY(180deg);
   width: fit-content;
@@ -54,7 +54,7 @@ const Img = styled.div`
   min-height: 100%;
   text-align: center;
   padding: 10px 0;
-  
+
   p{
     position: relative;
     vertical-align: sub;
@@ -84,7 +84,7 @@ const Stamp = ({stamp}) => {
           return "You read an article on Natural History!"
       } else if (category === "science") {
         return "You read an article about General Science!"
-      
+
   }}
 
   let docMessage = (category) => {
@@ -96,7 +96,7 @@ const Stamp = ({stamp}) => {
         return "You watched a documentary on Natural History!"
     } else if (category === "science") {
       return "You watched a documentary about General Science!"
-    
+
 }}
 //newpush
   return (

@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bar: {
     background: 'transparent',
+    backdropFilter: 'blur(10px)',
   },
   headerDefault: {
     background: '#090b17',

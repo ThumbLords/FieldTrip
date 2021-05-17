@@ -8,6 +8,8 @@ const Container = styled.div`
     margin: 5px auto;
     padding: 5px 1rem;
     display: inline !important;
+    left: 33.33%;
+    position: relative;
 `
 
 const Alerts = ({user, font}) => {
