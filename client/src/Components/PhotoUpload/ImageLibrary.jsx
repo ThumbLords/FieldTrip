@@ -48,7 +48,7 @@ const ImageLibrary = ({images, setImages, loadImages, clicked}) => {
         {images ?
         images.map((image, i) => (
           <div className="ImageContainer"  key={i}>
-            <img src={cloudinaryCore.url(`http://res.cloudinary.com/dntf1x5a6/image/upload/${image.public_id}.jpg`)}/>
+            <img src={cloudinaryCore.url(`https://res.cloudinary.com/dntf1x5a6/image/upload/${image.public_id}.jpg`)}/>
           </div >)
          )
       : <p>No images to view</p>}
