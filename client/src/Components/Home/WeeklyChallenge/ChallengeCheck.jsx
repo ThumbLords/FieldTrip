@@ -108,8 +108,8 @@ useEffect(() => {
     <div>
       {
         challengeComplete ?
-          <p className='complete' style={{ fontSize: font, color: "#736bfb"}}>CONGRATS! You've completed the daily challenge!</p> :
-
+          <p className='complete' style={{ fontSize: font, color: "#736bfb"}}>CONGRATS! You've completed the daily challenge!</p>
+          :
           <p style={{ color:"#1d1d1d", fontSize: font }}>Keep exploring to meet the daily challenge!</p>
       }
     </div>
