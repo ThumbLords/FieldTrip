@@ -82,7 +82,7 @@ const Documentary = ({ addResource, discView, search, font, saved, addSaved }) =
                                         href={`https://www.youtube.com/embed/${doc.id.videoId}`}
                                         target="_blank"
                                         onClick={() => { addResource(doc, 'documentary'); }}
-                                    > Here</a>
+                                    > Here </a>
                                     to watch on YouTube.
                                 </p>
                                 <IconButton

@@ -5,43 +5,47 @@ import IconButtons from '../../Navigation/IconButtons.jsx';
 import ChallengeCheck from './ChallengeCheck.jsx'
 
 const Container = styled.div`
-  background-color: lavender;
-  border-radius: 10px !important;
-  border: 3px !important;
-  border-color: whitesmoke !important;
-  margin: 50px;
-  padding: 50px;
-  /* display: flex; */
-  /* flex-flow: column; */
-  width: 50%;
-  justify-content: center;
-  position: absolute;
-  top: 130%;
-  left: 47%;
-  transform: translate(-50%, -50%);
-  opacity: 85%;
+    background-color: rgb(248, 248, 255, .67);
+    border-radius: 10px !important;
+    margin: 5rem auto;
+    margin-bottom: 5rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 80%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: rgb(9,11,23);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
 p{
   color: #1d1d1d;
+  text-align: center;
 }
 .challenge-header{
   color: #1d1d1d;
   text-align: start;
   /* text-decoration: underline; */
   /* font-weight: bold; */
-  font-size: 44px;
+  /* font-size: 4rem; */
   color: black;
 }
 .challenge{
   color: #1d1d1d;
   text-align: center;
-  font-size: 38px;
+  /* font-size: 3rem; */
 }
 .complete{
   color: #736bfb;
-  font-size: 20px;
+  /* font-size: 1rem; */
   text-align: center;
   color: black;
-
 }
 `
 
@@ -85,11 +89,7 @@ const WeeklyChallenge = ({ getStamps, user, stamps, font }) => {
   return (
     <>
       <Container>
-        <p className='challenge-header' style={{ fontSize: font + 14, fontWeight: 'bolder' }}>Daily Challenge:</p>
-        <br/>
-        (<p className='challenge' style={{ fontSize: font + 12, fontWeight: 'bold' }}>
-          {challenge}
-        </p>)
+        <p className='challenge-header' style={{ fontSize: font + 12, fontWeight: 'bolder' }}>Daily Challenge: {challenge}</p>
         { !stamps.length ?
           <p style={{ fontSize: font}}>Explore on the Discovery Tab to earn stamps!</p> :
         <ChallengeCheck stamps={stamps} challenge={challenge} challenges={challenges} getStamps={getStamps} font={font}/>
