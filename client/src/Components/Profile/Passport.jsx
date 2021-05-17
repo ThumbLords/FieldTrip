@@ -2,21 +2,51 @@ import React from 'react';
 import Stamp from './Stamp.jsx';
 import styled from 'styled-components';
 
+// const Container = styled.div`
+//   background-color: whitesmoke;
+//   border-radius: 180px !important;
+//   border: 3px !important;
+//   border-color: whitesmoke !important;
+//   margin: 3rem auto;
+//   margin-bottom: 5rem;
+//   padding: 20px;
+//   display: flex;
+//   flex-flow: row wrap;
+//   width: 65%;
+//   justify-content: center;
+//   color: rgb(9, 11, 23);
+// h3{
+//   color: rgb(9, 11, 23);
+//   text-align: center;
+//   width: 100%;
+//   margin-bottom: 1rem;
+//   margin-top: 0.25rem;
+// }
+// `
 const Container = styled.div`
-  background-color: lavender;
-  border-radius: 10px !important;
-  border: 3px !important;
-  border-color: whitesmoke !important;
-  margin: 3rem auto;
-  margin-bottom: 5rem;
-  padding: 20px;
-  display: flex;
-  flex-flow: row wrap;
-  width: 80%;
-  justify-content: center;
-  color: black;
+    background-color: rgb(248, 248, 255, .67);
+    border-radius: 10px !important;
+    border: 3px !important;
+    border-color: whitesmoke !important;
+    margin: 3rem auto;
+    margin-bottom: 5rem;
+    padding: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 65%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: rgb(9,11,23);
+    backdrop-filter: blur(10px);
 h3{
-  color: black;
+  color: rgb(9, 11, 23);
   text-align: center;
   width: 100%;
   margin-bottom: 1rem;
@@ -25,7 +55,7 @@ h3{
 `
 const Passport = ({stamps, badges}) => {
   // console.log(badges, 'BADGES on PASSPORT');
-  
+
   return (
 
     <>

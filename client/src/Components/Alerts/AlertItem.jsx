@@ -4,11 +4,13 @@ import { Container } from 'react-bootstrap/';
 import Trophy from '../../assets/trophy.png';
 
 const AlertContainer = styled(Container)`
-    background: rgba(25, 25, 25, 0.6) !important;
+    background:rgba(248, 248, 255, 0.6) !important;
+    color: rgb(9,11,23);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     margin: 1rem;
     padding: 1rem 2rem;
-    width: 100%;
+    width: 33.33%;
     height: auto;
   img{
     height: 50px;

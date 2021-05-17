@@ -27,7 +27,8 @@ import IconButton from '@material-ui/core/IconButton';
 // }
 // `
 const Caption= styled(Jumbotron)`
-    background: rgba(25, 25, 25, 0.6) !important;
+    background: rgb(9,11,23,0.6) !important;
+    backdrop-filter: blur(10px);
     height: auto;
     width: auto;
     margin: auto;

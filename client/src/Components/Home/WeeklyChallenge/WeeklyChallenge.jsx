@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import IconButtons from '../../Navigation/IconButtons.jsx';
 import ChallengeCheck from './ChallengeCheck.jsx'
-
 const Container = styled.div`
     background-color: rgb(248, 248, 255, .67);
     border-radius: 10px !important;
@@ -48,15 +45,12 @@ p{
   color: black;
 }
 `
-
 const ParDiv = styled.div`
-
     position: absolute;
     /* top: 150%; */
     /* left: 50%; */
     transform: translate(-50%, -50%);
 `
-
 const challenges = [
   { 0: 'Collect a stamp from each category.' },
   { 1: 'Earn at least 3 \'Earth\' stamps.' },
@@ -66,7 +60,6 @@ const challenges = [
   { 5: 'Earn at least 3 \'Natural History\' stamps.' },
   { 6: 'Watch 1 documentary and read 1 article from any category' },
 ];
-
 const WeeklyChallenge = ({ getStamps, user, stamps, font }) => {
   const [daily, setDaily] = useState(() => {
     let date = new Date();
@@ -74,18 +67,14 @@ const WeeklyChallenge = ({ getStamps, user, stamps, font }) => {
     return day;
   });
   const [challenge, setChallenge] = useState(challenges[daily][daily]);
-
     useEffect(() => {
       let date = new Date();
       const day = date.getDay();
       setChallenge(challenges[day][day])
     }, []);
-
-
     useEffect(() => {
       getStamps();
     }, []);
-
   return (
     <>
       <Container>
@@ -98,5 +87,4 @@ const WeeklyChallenge = ({ getStamps, user, stamps, font }) => {
     </>
   );
 };
-
 export default WeeklyChallenge;

@@ -26,6 +26,13 @@ const categories = [
 ];
 
 const useStyles = makeStyles({
+  // root:{
+  //   maxWidth: '600px',
+  //   opacity: '87%',
+  //   backgroundColor: 'rgb(9, 11, 23)',
+  //   boxShadow:' 0px 0px 13px 1px ghostwhite',
+  //   color: 'ghostwhite',
+  // },
   avatar: {
     backgroundColor:' rgba(0, 0, 0, 0.851)',
     color: 'whitesmoke',
@@ -52,8 +59,8 @@ const CategoryDialogBuilder = (props) => {
       <DialogTitle id="simple-dialog-title">Choose a category!</DialogTitle>
       <List>
         {categories.map((category) => (
-          <>
-            <ListItem button onClick={() => handleListItemClick(category.name, category.theme, category.searchTerm)} key={category.name}>
+          <div key={category.name}>
+            <ListItem button onClick={() => handleListItemClick(category.name, category.theme, category.searchTerm)}>
               <ListItemAvatar>
                 <Avatar className={classes.avatar}>
                   {category.icon}
@@ -61,8 +68,11 @@ const CategoryDialogBuilder = (props) => {
               </ListItemAvatar>
               <ListItemText primary={category.name} />
             </ListItem>
+            { category.name === 'General Science' ?
+              null :
             <Divider variant="inset" component="li" />
-          </>
+            }
+          </div>
         ))}
       </List>
     </Dialog>
@@ -73,7 +83,7 @@ CategoryDialogBuilder.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   selectedValue: PropTypes.string.isRequired,
-  selectedTheme: PropTypes.string.isRequired,
+  // selectedTheme: PropTypes.string.isRequired,
   discView: PropTypes.string.isRequired,
 };
 

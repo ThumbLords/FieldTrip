@@ -20,6 +20,12 @@ const ImageLibraryContainer = styled.div`
     border-radius: 10px;
     width: auto;
     height: 300px;
+    transition: transform 300ms;
+    :hover {
+        transform: scale(1.1);
+        z-index: 1;
+        box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.9);
+    }
   }
   h3{
     text-align: center;
