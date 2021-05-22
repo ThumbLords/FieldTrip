@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     display:"flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 }));
 
@@ -48,13 +48,25 @@ const useStyles = makeStyles((theme) => ({
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
+    console.log(event);
     setOpen(false);
   };
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgb(115, 107, 251, .75)', borderRadius: '10px', backdropFilter: 'blur(10px)'}}>Choose Your Avatar</Button>
+      {/* #736bfb button with no box-shadow */ }
+      {/* <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgb(115, 107, 251, .75)', borderRadius: '10px', backdropFilter: 'blur(10px)'}}>Choose Your Avatar</Button> */}
+
+      {/* dark button with ghostwhite box-shadow */}
+      {/* <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgba(9, 11, 23, 0.5)', borderRadius: '10px', backdropFilter: 'blur(10px)', boxShadow: '0px 0px 7px 1px ghostwhite'}}>Choose Your Avatar</Button> */}
+
+      {/* dark button with #736bfb box-shadow */}
+      {/* <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgba(9, 11, 23, 0.5)', borderRadius: '10px', backdropFilter: 'blur(10px)', boxShadow: '0px 0px 7px 1px #736bfb'}}>Choose Your Avatar</Button> */}
+
+      {/* clear button with (blurred backdrop) ghostwhite box-shadow */}
+      {/* <Button variant="contained" onClick={handleClickOpen} className='choose-avatar-btn' style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgba(0, 0, 0, 0)', borderRadius: '10px', backdropFilter: 'blur(90px)', boxShadow: '0px 0px 7px 1px ghostwhite'}}>Choose Your Avatar</Button> */}
+      <Button variant="contained" onClick={handleClickOpen} className={['choose-avatar-btn', '.color-changing']}>Choose Your Avatar</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Select a New Avatar!</DialogTitle>
         <DialogContent>

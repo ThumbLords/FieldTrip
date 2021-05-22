@@ -16,17 +16,26 @@ const ProfileStyles = styled.div`
     text-align: center;
   }
   .profileInfo h3{
-    padding-top: 1.25rem;
+    /* padding-top: 1.25rem; */
+    padding: 0.5rem;
+    width: max-content;
+    background: rgba(0,0,0,0);
+    backdrop-filter: blur(90px);
+    border-radius: 50px;
+    justify-content: center;
   }
 `;
 const Img = styled.div`
   img{
-    width: 200px;
-    height: 200px;
+    /* width: 200px; */
+    /* height: 200px; */
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.6));
-    background-color: rgb(9, 11, 23, 0.6);
+    /* filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.6)); */
+    background-color: rgba(0,0,0,0);
+    backdrop-filter: blur(90px);
   }
 `
 const Profile = ({user, getStamps, stamps, getBadges, badges}) => {
@@ -62,6 +71,7 @@ const Profile = ({user, getStamps, stamps, getBadges, badges}) => {
         <Img>
           <img src={avatar} alt="Avatar"/>
         </Img>
+        {/* <h3 style={{ background: 'transparent', backdropFilter: 'blur(7px)', padding: '0.25rem', borderRadius: '90px', width: 'fit-content', height: 'auto', marginTop: '0.5rem' }}>{user.name}</h3> */}
         <h3>{user.name}</h3>
       </div>
       <DialogSelectAvatar setAvatar={setAvatar} saveAvatar={saveAvatar}/>

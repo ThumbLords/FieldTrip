@@ -34,6 +34,7 @@ import treetopsBelow from './themes/earth/treetopsBelow.jpg';
 import leafBorder from './themes/earth/leafBorder.jpg';
 import veryGreen from './themes/earth/veryGreen.jpg';
 import contrast from './themes/earth/contrast.jpg';
+import landAndSea from './themes/earth/landAndSea.jpg';
 
 
 // !HISTORY! //
@@ -58,7 +59,7 @@ const App = () => {
     const [stepperCount, setStepperCount] = useState(0);
     // const [nasaPic, setNasaPic] = useState();
 
-    const earthThemes = [veryGreen, contrast, treetopsAbove, forest, treetopsBelow, leafBorder, earth];
+    const earthThemes = [veryGreen, contrast, landAndSea, treetopsAbove, forest, treetopsBelow, leafBorder, earth];
     const historyThemes = [columns, dinos, coliseum, dinoBones];
     const spaceThemes = [rainbowStars, spaceBlue, rainbowStars2, gradientMoon, space2, pinkStars, launch];
 

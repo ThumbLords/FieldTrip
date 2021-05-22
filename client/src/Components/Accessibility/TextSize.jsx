@@ -41,17 +41,17 @@ const TextSize = ({ font, setFont }) => {
         aria-label="text size changer buttons"
       >
         <Tooltip title='Increase font size' placement='right-start'>
-          <IconButton aria-label='increase font size' style={{ fontSize: 'large', color: '#736bfb', backgroundColor: 'whitesmoke' }} onClick={handleIncrease}>
+          <IconButton aria-label='increase font size' className='access-ctrl' onClick={handleIncrease}>
             <AddIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title='Reset font size' placement='right-start'>
-          <IconButton aria-label='reset font size' style={{ fontSize: 'large', color: '#736bfb', backgroundColor: 'whitesmoke' }} onClick={handleReset}>
+          <IconButton aria-label='reset font size' className='access-ctrl' onClick={handleReset}>
             <SettingsBackupRestoreIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title='Decrease font size' placement='right-start'>
-          <IconButton aria-label='decrease font size' style={{ fontSize: 'large', color: '#736bfb', backgroundColor: 'whitesmoke' }} onClick={handleDecrease}>
+          <IconButton aria-label='decrease font size' className='access-ctrl' onClick={handleDecrease}>
             <RemoveIcon/>
           </IconButton>
         </Tooltip>

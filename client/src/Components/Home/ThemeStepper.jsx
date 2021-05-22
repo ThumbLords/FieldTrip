@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: '17%',
     flexGrow: 1,
-    backgroundColor: 'rgb(9, 11, 23)',
+    backgroundColor: 'rgb(9, 11, 23, 0)',
   },
   arrows: {
     color: '#736bfb',

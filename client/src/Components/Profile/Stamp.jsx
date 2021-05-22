@@ -54,7 +54,6 @@ const Img = styled.div`
   min-height: 100%;
   text-align: center;
   padding: 10px 0;
-
   p{
     position: relative;
     vertical-align: sub;

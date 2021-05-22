@@ -24,7 +24,8 @@ import styled from 'styled-components';
 // }
 // `
 const Container = styled.div`
-    background-color: rgb(248, 248, 255, .67);
+    /* background-color: rgb(248, 248, 255, .67); */
+    background-color: rgb(248, 248, 255, 0.5);
     border-radius: 10px !important;
     border: 3px !important;
     border-color: whitesmoke !important;
