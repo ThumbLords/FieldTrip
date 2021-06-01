@@ -138,9 +138,6 @@ const GlobalStyles = createGlobalStyle`
       color: #736bfb;
       background: ghostwhite;
     }
-
-
-
     /* .color-changing{
       font-size: 1rem;
       font-weight: 600;
@@ -174,43 +171,5 @@ const GlobalStyles = createGlobalStyle`
         background-position: 1% 0%;
       }
     }
-
-    /* .choose-avatar-btn {
-      position: relative;
-      overflow: hidden;
-
-      &::before{
-        content: '';
-        display: block;
-        position: absolute;
-        background: rgba(255, 255, 255, 0.5);
-        width: 30px;
-        height: 100%;
-        top: 0;
-        filter: blur(30px);
-        transform: translateX(-100px) skewX(-15deg);
-      }
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        background: rgba(255, 255, 255, 0.2);
-        width: 30px;
-        height: 100%;
-        top: 0;
-        filter: blur(5px);
-        transform: translateX(-100px) skewX(-15deg);
-      }
-      &:hover {
-        &::before,
-        &::after {
-          transform: translateX(300px) skewX(-15deg);
-          transition: 0.7s;
-        }
-      }
-    } */
-
-
-
 `;
 export default GlobalStyles;
