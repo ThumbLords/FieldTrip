@@ -132,15 +132,15 @@ const GlobalStyles = createGlobalStyle`
       /* height: 60px; */
       overflow: hidden;
       /* background-image: linear-gradient(135deg, #FBFBFB 0%, #BFB3FB 38%, #736BFB 100%); */
-      background-image: linear-gradient(135deg, transparent 0%, #737bfb 38%, transparent 100%); // !! //
+      /* background-image: linear-gradient(135deg, transparent 0%, #737bfb 38%, transparent 100%); // !! // */
       /* background-image: linear-gradient(135deg, transparent 0%, transparent 50%, transparent 100%); */
       /* background-image: linear-gradient(135deg,rgba(115, 107, 251, 0) 0%,rgba(191, 179, 251, 0) 38%,rgba(115, 107, 251, 0) 100%); */
       background-size: 400% 400%;
       background-color: rgba(0,0,0,0);
       backdrop-filter: blur(144px);
-      animation: transitioningBackground 10s ease infinite;
+      /* animation: transitioningBackground 10s ease infinite; */
       /* animation: transitioningBackground 6s cubic-bezier(0.5, -0.15, 0.45, 1.09) infinite; */
-      transition: 0.6s;
+      /* transition: 0.6s; */
       /* transition: 0.6s, transform 600ms; */
       :hover{
         background-image: linear-gradient(to bottom, #FF00DD 0%, #B254FB 50%, #736BFB 100%);
@@ -155,6 +155,8 @@ const GlobalStyles = createGlobalStyle`
         z-index: 1;
         font-size: 1rem;
         /* backdrop-filter: blur(1px); */
+        animation: transitioningBackground 6s infinite ease-in-out;
+        transition: 0.6s;
       }
     }
     .access-ctrl {
@@ -199,7 +201,7 @@ const GlobalStyles = createGlobalStyle`
       }
     }
 
-    .choose-avatar-btn {
+    /* .choose-avatar-btn {
       position: relative;
       overflow: hidden;
 
@@ -232,7 +234,7 @@ const GlobalStyles = createGlobalStyle`
           transition: 0.7s;
         }
       }
-    }
+    } */
 
 
 
