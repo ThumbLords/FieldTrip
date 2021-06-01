@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BottomNav from './Components/Navigation/BottomNav.jsx';
 import {
@@ -13,9 +13,13 @@ import Discovery from './Components/Discovery/Discovery.jsx'
 import Alerts from './Components/Alerts/Alerts.jsx'
 import PhotoUpload from './Components/PhotoUpload/PhotoUpload.jsx'
 import AppBarHeader from './Components/Home/AppBarHeader.jsx';
-import { Button } from '@material-ui/core'
+import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import TextSize from './Components/Accessibility/TextSize.jsx';
+import { lightTheme, darkTheme } from './Components/ThemeSwitcher/Themes.js';
+import { useDarkMode } from './Components/ThemeSwitcher/useDarkMode.js';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './globalStyles.js';
 
 // ?SPACE? //
 import gradientMoon from './themes/space/gradientMoon.png';
@@ -57,11 +61,14 @@ const App = () => {
     const [saved, setSaved] = useState([]);
     const [badges, setBadges] = useState([]);
     const [stepperCount, setStepperCount] = useState(0);
+    const [ systemTheme, themeToggler, mountedComponent ] = useDarkMode();
     // const [nasaPic, setNasaPic] = useState();
 
     const earthThemes = [veryGreen, contrast, landAndSea, treetopsAbove, forest, treetopsBelow, leafBorder, earth];
     const historyThemes = [columns, dinos, coliseum, dinoBones];
     const spaceThemes = [rainbowStars, spaceBlue, rainbowStars2, gradientMoon, space2, pinkStars, launch];
+
+    const themeMode = systemTheme === 'dark' ? darkTheme : lightTheme;
 
     const themeLength = () => {
       if (theme === 'spaceTheme') {
@@ -104,7 +111,9 @@ const App = () => {
         backgroundAttachment: 'fixed',
       },
       headerDefault: {
-        height: '175vh'
+        height: '175vh',
+        background: `${({ theme }) => theme.bodyBG}`,
+        color: `${({ theme }) => theme.bodyText}`,
       },
     }));
     const classes = useStyles();
@@ -298,49 +307,56 @@ const App = () => {
       setResourceValue(newValue);
     };
 
+    useEffect(() => {
+      !mountedComponent && <div/>
+    }, []);
     return (
-    <div className={currClass} style={{ fontSize: font }}>
-      <AppBarHeader user={user} logout={logout} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} setStepperCount={setStepperCount} themeLength={themeLength} addUserCategory={addUserCategory}/>
-      {!user
-      ?(
-        <div >
-          <Home />
-          <Button variant="contained" style={{top: '0.25rem', right: '0.25rem', position: 'absolute' }}>
-          <a
-            className="login-button"
-            href="/auth/google"
-          >
-          LOGIN WITH GOOGLE
-          </a>
-          </Button>
-        </div>
-      )
-        : (
-        <Router>
-
-            <BottomNav />
-            <Switch>
-              <Route exact path="/">
-                  <Home user={user} logout={logout} getStamps={getStamps} stamps={stamps} font={font} getBadges={getBadges}/>
-              </Route>
-              <Route path="/profile">
-                  <Profile user={user} logout={logout} stamps={stamps} getStamps={getStamps} badges={badges} getBadges={getBadges}/>
-              </Route>
-              <Route path="/discovery">
-                  <Discovery addResource={addResource} discView={discView} setDiscView={setDiscView} search={search} setSearch={setSearch} font={font} resourceValue={resourceValue} handleResourceChange={handleResourceChange} saved={saved} addSaved={addSaved} getSaved={getSaved} />
-              </Route>
-              <Route path="/alerts">
-                  <Alerts user={user} alerts={alerts} font={font}/>
-              </Route>
-              <Route path="/PhotoUpload">
-                  <PhotoUpload font={font}/>
-              </Route>
-            </Switch>
-
-      </Router>
-       )}
-       <TextSize font={font} setFont={setFont}/>
-    </div>
+      <div className={currClass} style={{ fontSize: font }}>
+        <ThemeProvider theme={themeMode}>
+           <GlobalStyles/>
+          <AppBarHeader user={user} logout={logout} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} setStepperCount={setStepperCount} themeLength={themeLength} systemTheme={systemTheme} toggleTheme={themeToggler}/>
+        {/* </ThemeProvider> */}
+          {!user
+          ?(
+            // <ThemeProvider theme={themeMode}>
+            <div >
+              <Home />
+              <Button variant="contained" style={{top: '0.25rem', right: '0.25rem', position: 'absolute' }}>
+              <a
+                className="login-button"
+                href="/auth/google"
+              >
+              LOGIN WITH GOOGLE
+              </a>
+              </Button>
+            </div>
+            // </ThemeProvider>
+          )
+            : (
+              <Router>
+                <BottomNav />
+                <Switch>
+                  <Route exact path="/">
+                      <Home user={user} logout={logout} getStamps={getStamps} stamps={stamps} font={font} getBadges={getBadges}/>
+                  </Route>
+                  <Route path="/profile">
+                      <Profile user={user} logout={logout} stamps={stamps} getStamps={getStamps} badges={badges} getBadges={getBadges}/>
+                  </Route>
+                  <Route path="/discovery">
+                      <Discovery addResource={addResource} discView={discView} setDiscView={setDiscView} search={search} setSearch={setSearch} font={font} resourceValue={resourceValue} handleResourceChange={handleResourceChange} saved={saved} addSaved={addSaved} getSaved={getSaved} />
+                  </Route>
+                  <Route path="/alerts">
+                      <Alerts user={user} alerts={alerts} font={font}/>
+                  </Route>
+                  <Route path="/PhotoUpload">
+                      <PhotoUpload font={font}/>
+                  </Route>
+                </Switch>
+            </Router>
+          )}
+          <TextSize font={font} setFont={setFont}/>
+          </ThemeProvider>
+      </div>
     )
 }
 

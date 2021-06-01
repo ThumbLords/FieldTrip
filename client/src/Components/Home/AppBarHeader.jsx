@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import CategoryDialog from '../Home/CategoryDialog.jsx';
 import logo from '../../assets/LogoNoBack.png';
 import ThemeStepper from './ThemeStepper.jsx';
+import Toggle from '../ThemeSwitcher/Toggler.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, search, setSearch, setStepperCount, themeLength, addUserCategory }) => {
+const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, search, setSearch, setStepperCount, themeLength, systemTheme, toggleTheme }) => {
   const classes = useStyles();
 
 
@@ -43,12 +44,13 @@ const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, se
             <Typography variant="h6" className={classes.title}>
             </Typography>
             <ThemeStepper setStepperCount={setStepperCount} themeLength={themeLength} theme={theme} />
+            <Toggle systemTheme={systemTheme} toggleTheme={toggleTheme}/>
             <>
               { user &&
-              (<CategoryDialog theme={theme} setTheme={setTheme} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} addUserCategory={addUserCategory}/>)
+              (<CategoryDialog theme={theme} setTheme={setTheme} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch}/>)
               }
             </>
-            <Button variant='text' color='inherit' onClick={logout}>
+            <Button variant='text' id='btn' onClick={logout}>
               {user ? 'Logout' : null}
             </Button>
           </Toolbar>

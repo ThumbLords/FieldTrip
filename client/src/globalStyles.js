@@ -6,19 +6,73 @@ const GlobalStyles = createGlobalStyle`
   }
   body{
     font-family: 'Spartan', sans-serif;
-    background-color: rgb(9, 11, 23);
-    color: whitesmoke;
+    background: ${({ theme }) => theme.bodyBG};
+    color: ${({ theme }) => theme.bodyText};
     height: 100vh;
+    transition: all 0.3s linear;
   }
   //test
   header{
-    background-color: rgb(9, 11, 23);
+    background: ${({ theme }) => theme.bodyBG};
     padding: 10px 10px;
     margin: 0;
     overflow: hidden;
     box-shadow: 0px 0px 7px 0px #736bfb;
     opacity: 87%;
     backdrop-filter: blur(8px);
+  }
+  .stamp-container{
+    background-color: ${({ theme }) => theme.stampContainer};
+    border-radius: 10px !important;
+    border: 3px !important;
+    border-color: whitesmoke !important;
+    margin: 3rem auto;
+    margin-bottom: 5rem;
+    padding: 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    width: 65%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: ${({ theme }) => theme.bodyText};
+    backdrop-filter: blur(10px);
+    h3{
+      color: ${({ theme }) => theme.bodyText};
+      text-align: center;
+      width: 100%;
+      margin-bottom: 1rem;
+      margin-top: 0.25rem;
+    }
+  }
+  .avatar-selector{
+    background: ${({ theme }) => theme.bodyBG};
+    color: ${({ theme }) => theme.bodyText};
+    opacity: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 13px 1px ${({ theme }) => theme.bodyText};
+  }
+  #btn{
+    color: ${({ theme }) => theme.bodyText};
+  }
+  #bottom-nav{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: ${({ theme }) => theme.bottomNavBG};
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 0px 7px 0px #736bfb
+  }
+  .bottom-nav-icon{
+    /* background: ${({ theme }) => theme.bodyText}; */
+    color: ${({ theme }) => theme.bottomNavPrimaryIcon};
   }
   .logo{
     opacity: 100% !important;
@@ -28,6 +82,10 @@ const GlobalStyles = createGlobalStyle`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  .news-text{
+    font-weight: bolder;
+    color: ${({ theme }) => theme.newsCardText};
   }
   .video-responsive{
     overflow: hidden;
@@ -45,6 +103,12 @@ const GlobalStyles = createGlobalStyle`
   .youtube{
     padding-bottom: 250px;
   }
+  .bg-light{
+    background-color: ${({ theme }) => theme.newsCardBG};
+  }
+  .mb-4 .mt-4 .mr-4 .ml-4 {
+    background-color: ${({ theme }) => theme.newsCardBG};
+  }
   .news-container{
     display: flex;
     position: center;
@@ -55,18 +119,18 @@ const GlobalStyles = createGlobalStyle`
     max-width: 200px;
   }
   #basicTabs{
-      background: rgb(9, 11, 23);
+      background: ${({ theme }) => theme.bodyBG};
       color: #736bfb;
       margin-top: 0;
       opacity: 100%;
       box-shadow: 0px 0px 7px 0px #736bfb;
     }
     #tab{
-      color: whitesmoke;
+      color: ${({ theme }) => theme.bodyText};
       backdrop-filter: blur(8px);
     }
     #news-card-paper{
-      background-color: rgb(9, 11, 23);
+      background-color: ${({ theme }) => theme.newsCardBG};
       opacity: 87%;
     }
     .MuiMobileStepper-dot{
@@ -90,32 +154,32 @@ const GlobalStyles = createGlobalStyle`
     }
     .MuiDialog-paperWidthSm{
       max-width: 600px;
-      background-color: rgb(9, 11, 23);
-      box-shadow: 0px 0px 13px 1px ghostwhite;
-      color: ghostwhite;
+      background-color: ${({ theme }) => theme.bodyBG};
+      box-shadow: 0px 0px 13px 1px ${({ theme }) => theme.bodyText};
+      color: ${({ theme }) => theme.bodyText};
       border-radius: 10px;
     }
     .MuiDivider-inset{
       margin-left: 90px;
-      background-color: ghostwhite;
+      background-color: ${({ theme }) => theme.bodyText};
       opacity: 0.45;
     }
     .makeStyles-avatar-16{
-      color: rgb(9, 11, 23);
-      background-color: ghostwhite;
+      color: ${({ theme }) => theme.bodyBG};
+      background-color: ${({ theme }) => theme.bodyText};
     }
     .MuiSelect-icon{
-      color: ghostwhite;
+      color: ${({ theme }) => theme.bodyText};
     }
     .choose-avatar-btn {
       margin: 15px auto;
       display: flex;
       border-radius: 10px;
       backdrop-filter: blur(90px);
-      box-shadow: 0px 0px 6px 2px ghostwhite;
+      box-shadow: 0px 0px 6px 2px ${({ theme }) => theme.bodyText};
       font-size: 0.95rem;
       font-weight: 500;
-      color: ghostwhite;
+      color: ${({ theme }) => theme.bodyText};
       text-align: center;
       overflow: hidden;
       background-size: 400% 400%;
@@ -137,6 +201,13 @@ const GlobalStyles = createGlobalStyle`
       font-size: large;
       color: #736bfb;
       background: ghostwhite;
+    }
+    .avatar-img{
+      background-color: ${({ theme }) => theme.avatarBG};
+    }
+    .alert-container{
+      background-color: ${({ theme }) => theme.stampContainer};
+      color: ${({ theme }) => theme.alertText};
     }
     /* .color-changing{
       font-size: 1rem;

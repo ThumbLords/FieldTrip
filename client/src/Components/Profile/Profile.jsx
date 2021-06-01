@@ -33,8 +33,8 @@ const Img = styled.div`
     height: 300px;
     border-radius: 50%;
     object-fit: cover;
+    background: rgba(0,0,0,0);
     /* filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.6)); */
-    background-color: rgba(0,0,0,0);
     backdrop-filter: blur(90px);
   }
 `

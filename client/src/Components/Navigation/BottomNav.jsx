@@ -29,15 +29,15 @@ const bottomNavTheme = createMuiTheme({
 })
 
 const useStyles = makeStyles({
-  root: {
-    position: 'fixed',
-    bottom: '0',
-    width: '100%',
-    'z-index': '100',
-    backgroundColor: 'rgba(9,11,23, 0.92)',
-    backdropFilter: 'blur(8px)',
-    boxShadow: '0px 0px 7px 0px #736bfb'
-  },
+  // root: {
+  //   position: 'fixed',
+  //   bottom: '0',
+  //   width: '100%',
+  //   'z-index': '100',
+  //   backgroundColor: 'rgba(9,11,23, 0.92)',
+  //   backdropFilter: 'blur(8px)',
+  //   boxShadow: '0px 0px 7px 0px #736bfb'
+  // },
   vertDiv: {
     backgroundColor: 'rgba(115,107,251,0.77)'
   }
@@ -52,8 +52,8 @@ const BottomNav = () => {
   };
 
   return (
-    <ThemeProvider theme={bottomNavTheme}>
-      <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+    <div id='bottom-nav'>
+      <BottomNavigation value={value} onChange={handleChange} className={classes.root} id='bottom-nav'>
 
         <Divider className={classes.vertDiv} orientation="vertical" flexItem />
         <Divider className={classes.vertDiv} orientation="vertical" flexItem />
@@ -61,7 +61,7 @@ const BottomNav = () => {
         <BottomNavigationAction
           label="Discovery"
           value="discovery"
-          icon={<SearchSharpIcon fontSize="large" />}
+          icon={<SearchSharpIcon fontSize="large" className='bottom-nav-icon' />}
           component={Link}
           to="/discovery"
         />
@@ -71,7 +71,7 @@ const BottomNav = () => {
         <BottomNavigationAction
           label="Profile"
           value="profile"
-          icon={<EmojiPeopleSharpIcon fontSize="large" />}
+          icon={<EmojiPeopleSharpIcon fontSize="large" className='bottom-nav-icon' />}
           component={Link}
           to="/profile"
         />
@@ -81,7 +81,7 @@ const BottomNav = () => {
         <BottomNavigationAction
           label="Home"
           value="home"
-          icon={<HomeSharpIcon fontSize="large" />}
+          icon={<HomeSharpIcon fontSize="large" className='bottom-nav-icon' />}
           component={Link}
           to="/"
         />
@@ -91,7 +91,7 @@ const BottomNav = () => {
         <BottomNavigationAction
           label="Alerts"
           value="alerts"
-          icon={<NotificationsSharpIcon fontSize="large" />}
+          icon={<NotificationsSharpIcon fontSize="large" className='bottom-nav-icon' />}
           component={Link}
           to="/alerts"
         />
@@ -101,7 +101,7 @@ const BottomNav = () => {
         <BottomNavigationAction
           label="Camera"
           value="photoUpload"
-          icon={<CameraAltSharpIcon fontSize="large" />}
+          icon={<CameraAltSharpIcon fontSize="large" className='bottom-nav-icon' />}
           component={Link}
           to="/PhotoUpload"
         />
@@ -109,7 +109,7 @@ const BottomNav = () => {
         <Divider className={classes.vertDiv} orientation="vertical" flexItem />
 
       </BottomNavigation>
-    </ThemeProvider>
+    </div>
   );
 }
 

@@ -74,12 +74,13 @@ const useStyles = makeStyles((theme) => ({
             <FormControl className={classes.formControl}>
               {/* <InputLabel htmlFor="demo-dialog-native" style={{color: 'ghostwhite', padding: '5px'}}>Avatars</InputLabel> */}
               <Select
-                style={{backgroundColor: 'rgb(9,11,23)', color: 'ghostwhite', opacity: '100%', borderRadius: '10px', boxShadow: '0px 0px 13px 1px ghostwhite'}}
+                // style={{backgroundColor: 'rgb(9,11,23)', color: 'ghostwhite', opacity: '100%', borderRadius: '10px', boxShadow: '0px 0px 13px 1px ghostwhite'}}
                 // style={{borderRadius: '10px'}}
                 native
                 value={avatar}
                 onChange={handleChange}
                 input={<Input id="demo-dialog-native" />}
+                className='avatar-selector'
               >
                 <option aria-label="None" value=""/>
                 <option value={astro}>Astro Jelly</option>
@@ -92,10 +93,10 @@ const useStyles = makeStyles((theme) => ({
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} style={{color: 'ghostwhite'}}>
+          <Button onClick={handleClose} id='btn'>
             Cancel
           </Button>
-          <Button onClick={handleClose} style={{color: 'ghostwhite'}}>
+          <Button onClick={handleClose} id='btn'>
             Ok
           </Button>
         </DialogActions>
