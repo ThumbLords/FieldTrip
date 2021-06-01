@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, search, setSearch, setStepperCount, themeLength }) => {
+const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, search, setSearch, setStepperCount, themeLength, addUserCategory }) => {
   const classes = useStyles();
 
 
@@ -44,8 +44,8 @@ const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, se
             </Typography>
             <ThemeStepper setStepperCount={setStepperCount} themeLength={themeLength} theme={theme} />
             <>
-              { user ?
-              (<CategoryDialog theme={theme} setTheme={setTheme} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} />) : null
+              { user &&
+              (<CategoryDialog theme={theme} setTheme={setTheme} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} addUserCategory={addUserCategory}/>)
               }
             </>
             <Button variant='text' color='inherit' onClick={logout}>

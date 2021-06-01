@@ -103,6 +103,9 @@ const App = () => {
         backgroundSize: 'cover',
         backgroundAttachment: 'fixed',
       },
+      headerDefault: {
+        height: '175vh'
+      },
     }));
     const classes = useStyles();
     const currClass = classes[`${theme}`];
@@ -201,7 +204,7 @@ const App = () => {
           setSaved(data);
         })
       }
-      };
+    };
 
       //LANDING
   //DATA FOR BADGE CONSTRUCTION/ D3
@@ -250,6 +253,23 @@ const App = () => {
       .catch()
   };
 
+  const getUserCategory = () => {
+    if (user) {
+      axios.get(`/category/${user.id}`)
+        .then(({ data }) => {
+          setTheme(data);
+        })
+      }
+    };
+
+  const addUserCategory = (themeName) => {
+    axios.post('/category', themeName)
+      .then(() => {
+        getUserCategory();
+      })
+      .catch();
+  };
+
   //  const getAlerts = () => {
   //   //  debugger;
   //   if (user) {
@@ -280,7 +300,7 @@ const App = () => {
 
     return (
     <div className={currClass} style={{ fontSize: font }}>
-      <AppBarHeader user={user} logout={logout} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} setStepperCount={setStepperCount} themeLength={themeLength} />
+      <AppBarHeader user={user} logout={logout} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} setStepperCount={setStepperCount} themeLength={themeLength} addUserCategory={addUserCategory}/>
       {!user
       ?(
         <div >
