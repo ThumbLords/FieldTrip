@@ -3,13 +3,15 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   *{
     box-sizing: border-box;
+    transition: all 0.3s linear;
+  }
+  body, html{
   }
   body{
     font-family: 'Spartan', sans-serif;
     background: ${({ theme }) => theme.bodyBG};
     color: ${({ theme }) => theme.bodyText};
     height: 100vh;
-    transition: all 0.3s linear;
   }
   //test
   header{
@@ -169,7 +171,8 @@ const GlobalStyles = createGlobalStyle`
       background-color: ${({ theme }) => theme.bodyText};
     }
     .MuiSelect-icon{
-      color: ${({ theme }) => theme.bodyText};
+      /* color: ${({ theme }) => theme.bodyText}; */
+      color: #736BFB;
     }
     .choose-avatar-btn {
       margin: 15px auto;
@@ -199,11 +202,12 @@ const GlobalStyles = createGlobalStyle`
     }
     .access-ctrl {
       font-size: large;
-      color: #736bfb;
-      background: ghostwhite;
-    }
-    .avatar-img{
-      background-color: ${({ theme }) => theme.avatarBG};
+      color: ${({ theme }) => theme.accessBtn};
+      /* background: ghostwhite; */
+      background: ${({ theme }) => theme.access};
+      :hover{
+        background: ${({ theme }) => theme.access};
+      }
     }
     .alert-container{
       background-color: ${({ theme }) => theme.stampContainer};

@@ -38,8 +38,6 @@ const useStyles = makeStyles((theme) => ({
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    // setAvatar(String(event.target.value) || avatarDefaultPurple);
-    // saveAvatar(String(event.target.value) || avatarDefaultPurple);
     setAvatar(String(event.target.value) || avatarDefaultGrey);
     saveAvatar(String(event.target.value) || avatarDefaultGrey);
   };
@@ -55,27 +53,14 @@ const useStyles = makeStyles((theme) => ({
 
   return (
     <div>
-      {/* #736bfb button with no box-shadow */ }
-      {/* <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgb(115, 107, 251, .75)', borderRadius: '10px', backdropFilter: 'blur(10px)'}}>Choose Your Avatar</Button> */}
-
-      {/* dark button with ghostwhite box-shadow */}
-      {/* <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgba(9, 11, 23, 0.5)', borderRadius: '10px', backdropFilter: 'blur(10px)', boxShadow: '0px 0px 7px 1px ghostwhite'}}>Choose Your Avatar</Button> */}
-
-      {/* dark button with #736bfb box-shadow */}
-      {/* <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgba(9, 11, 23, 0.5)', borderRadius: '10px', backdropFilter: 'blur(10px)', boxShadow: '0px 0px 7px 1px #736bfb'}}>Choose Your Avatar</Button> */}
-
-      {/* clear button with (blurred backdrop) ghostwhite box-shadow */}
-      {/* <Button variant="contained" onClick={handleClickOpen} className='choose-avatar-btn' style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgba(0, 0, 0, 0)', borderRadius: '10px', backdropFilter: 'blur(90px)', boxShadow: '0px 0px 7px 1px ghostwhite'}}>Choose Your Avatar</Button> */}
-      <Button variant="contained" onClick={handleClickOpen} className={['choose-avatar-btn', '.color-changing']}>Choose Your Avatar</Button>
+      {/* <Button variant="contained" onClick={handleClickOpen} className={['choose-avatar-btn', '.color-changing']}>Choose Your Avatar</Button> */}
+      <Button variant="contained" onClick={handleClickOpen} className='choose-avatar-btn'>Choose Your Avatar</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Select a New Avatar!</DialogTitle>
         <DialogContent>
           <form className={classes.container}>
             <FormControl className={classes.formControl}>
-              {/* <InputLabel htmlFor="demo-dialog-native" style={{color: 'ghostwhite', padding: '5px'}}>Avatars</InputLabel> */}
               <Select
-                // style={{backgroundColor: 'rgb(9,11,23)', color: 'ghostwhite', opacity: '100%', borderRadius: '10px', boxShadow: '0px 0px 13px 1px ghostwhite'}}
-                // style={{borderRadius: '10px'}}
                 native
                 value={avatar}
                 onChange={handleChange}

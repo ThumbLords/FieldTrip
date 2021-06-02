@@ -8,6 +8,7 @@ import CategoryDialog from '../Home/CategoryDialog.jsx';
 import logo from '../../assets/LogoNoBack.png';
 import ThemeStepper from './ThemeStepper.jsx';
 import Toggle from '../ThemeSwitcher/Toggler.js';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     background: '#090b17',
     backdropFilter: 'blur(8px)',
   },
+  vertDiv: {
+    backgroundColor: 'rgba(115,107,251,0.77)',
+  }
 }));
 
 const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, search, setSearch, setStepperCount, themeLength, systemTheme, toggleTheme }) => {
@@ -45,11 +49,11 @@ const AppBarHeader = ({ user, logout, discView, setDiscView, theme, setTheme, se
             </Typography>
             <ThemeStepper setStepperCount={setStepperCount} themeLength={themeLength} theme={theme} />
             <Toggle systemTheme={systemTheme} toggleTheme={toggleTheme}/>
-            <>
-              { user &&
-              (<CategoryDialog theme={theme} setTheme={setTheme} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch}/>)
-              }
-            </>
+            <Divider className={classes.vertDiv} orientation="vertical" flexItem />
+            {
+              user && (<CategoryDialog theme={theme} setTheme={setTheme} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch}/>)
+            }
+            <Divider className={classes.vertDiv} orientation="vertical" flexItem />
             <Button variant='text' id='btn' onClick={logout}>
               {user ? 'Logout' : null}
             </Button>

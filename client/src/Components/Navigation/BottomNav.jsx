@@ -29,15 +29,6 @@ const bottomNavTheme = createMuiTheme({
 })
 
 const useStyles = makeStyles({
-  // root: {
-  //   position: 'fixed',
-  //   bottom: '0',
-  //   width: '100%',
-  //   'z-index': '100',
-  //   backgroundColor: 'rgba(9,11,23, 0.92)',
-  //   backdropFilter: 'blur(8px)',
-  //   boxShadow: '0px 0px 7px 0px #736bfb'
-  // },
   vertDiv: {
     backgroundColor: 'rgba(115,107,251,0.77)'
   }
@@ -53,7 +44,7 @@ const BottomNav = () => {
 
   return (
     <div id='bottom-nav'>
-      <BottomNavigation value={value} onChange={handleChange} className={classes.root} id='bottom-nav'>
+      <BottomNavigation value={value} onChange={handleChange} id='bottom-nav'>
 
         <Divider className={classes.vertDiv} orientation="vertical" flexItem />
         <Divider className={classes.vertDiv} orientation="vertical" flexItem />
