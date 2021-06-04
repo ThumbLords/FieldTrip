@@ -48,7 +48,8 @@ const PhotoUpload = ({font}) => {
   const [selectedFile, useSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
   const [images, setImages] = useState();
-  const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -89,17 +90,32 @@ const PhotoUpload = ({font}) => {
     }
   }
 
-const loadImages = () => {
-  axios.get('/api/images')
-  .then(({data}) => {
-    let result = filterImages(data)
-    console.log('UPLOAD IMAGE DATA', result);
-    setImages(result);
-  })
-    .catch ((error) => {
-    console.log('image upload threw an error:', error)
-  })
-}
+
+    // const loadImages = () => {
+    //   axios.get('/api/images')
+    //   .then(({data}) => {
+    //     let result = filterImages(data)
+    //     console.log('UPLOAD IMAGE DATA', result);
+    //     setImages(result);
+    //   })
+    //     .catch ((error) => {
+    //     console.log('image upload threw an error:', error)
+    //   })
+    // }
+
+    const loadImages = async () => {
+      try {
+        const result = await axios.get('/api/images');
+        const data = await result.data;
+        const res = filterImages(data);
+        setImages(res);
+        // setLoaded(!loaded);
+        console.log('res from load image', res)
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
 
 const filterImages = (images) => {
   //filter images before map
@@ -109,6 +125,7 @@ const filterImages = (images) => {
 };
 
   useEffect(()=> {
+    console.log('click photo upload', clicked);
     loadImages();
   }, [clicked])
 
@@ -118,7 +135,7 @@ const filterImages = (images) => {
         <input
           type="file" name="image" className="form-input" onChange={handleFileInputChange} value={fileInputState}
           />
-        <Button variant="outlined" className="btn" type="submit" onClick={()=> loadImages()}>Submit</Button>
+        <Button variant="outlined" className="btn" type="submit" onClick={()=> uploadImages()}>Submit</Button>
       </StyledForm>
       <StyledTitle>Upload Your Discoveries</StyledTitle>
       <StyledP style={{ fontSize: font }}>When you're out in the world, whether you're traveling, or taking a nature walk, or stargazing, take a look around. Explore your surroundings and upload your discoveries! Share with other Field Trippers and enjoy sharing the beauty of life with other enthusiasts.</StyledP>

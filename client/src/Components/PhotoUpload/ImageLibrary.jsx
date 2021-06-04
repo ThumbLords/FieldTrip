@@ -37,10 +37,10 @@ const ImageLibraryContainer = styled.div`
 
 
 const ImageLibrary = ({images, setImages, loadImages, clicked}) => {
-
-  useEffect(()=> {
-    loadImages();
-  }, [clicked])
+  console.log('click', clicked);
+  // useEffect(()=> {
+  //   //loadImages();
+  // }, [clicked])
 
   return(
     <ImageLibraryContainer>
