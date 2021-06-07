@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import trophy from '../../assets/trophy.png';
+import defaultStamp from '../../assets/defaultStamp.jpg'
 
 
 const Img = styled.div`
@@ -105,7 +106,7 @@ const Stamp = ({stamp}) => {
         <div className="flip-card">
           <div className="flip-card-inner">
             <div className="flip-card-front">
-              <img src={stamp.image} alt="stamp" />
+              <img src={stamp.image || defaultStamp} alt="stamp" />
             </div>
             <div className="flip-card-back active-card">
               {
