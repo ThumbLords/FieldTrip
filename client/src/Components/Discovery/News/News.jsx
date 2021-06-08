@@ -87,7 +87,9 @@ const News = ({ addResource, discView, search, font, saved, addSaved }) => {
                         bg="light"
                         key={1000 * Math.random()}
                     >
-                        <Image src={news[0].urlToImage}
+                        <Image
+                            src={news[0].urlToImage}
+                            alt='No Image Available'
                             key={1000 * Math.random()}
                             className="news-img-top"
                             >
@@ -121,7 +123,9 @@ const News = ({ addResource, discView, search, font, saved, addSaved }) => {
                         bg="light"
                         key={1000 * Math.random()}
                     >
-                        <Image src={news[1].urlToImage}
+                        <Image
+                            src={news[1].urlToImage}
+                            alt='No Image Available'
                             key={1000 * Math.random()}
                             className="news-img-top"
                             >
@@ -155,7 +159,9 @@ const News = ({ addResource, discView, search, font, saved, addSaved }) => {
                         bg="light"
                         key={1000 * Math.random()}
                     >
-                        <Image src={news[2].urlToImage}
+                        <Image
+                            src={news[2].urlToImage}
+                            alt='No Image Available'
                             key={1000 * Math.random()}
                             className="news-img-top"
                             >
@@ -189,7 +195,9 @@ const News = ({ addResource, discView, search, font, saved, addSaved }) => {
                         bg="light"
                         key={1000 * Math.random()}
                     >
-                        <Image src={news[3].urlToImage}
+                        <Image
+                            src={news[3].urlToImage}
+                            alt='No Image Available'
                             key={1000 * Math.random()}
                             className="news-img-top"
                             >
@@ -223,26 +231,28 @@ const News = ({ addResource, discView, search, font, saved, addSaved }) => {
                         bg="light"
                         key={1000 * Math.random()}
                     >
-                        <Image src={news[4].urlToImage}
+                        <Image
+                            src={news[6].urlToImage}
+                            alt='No Image Available'
                             key={1000 * Math.random()}
                             className="news-img-top"
                             >
                         </Image>
                         <Card.Body>
-                            <Card.Title style={{ fontSize: font + 4, color: '#070707', fontWeight: 'bolder' }}>{news[4].title}</Card.Title>
-                            <Card.Text style={{ fontSize: font }}>{news[4].description}</Card.Text>
+                            <Card.Title style={{ fontSize: font + 4, color: '#070707', fontWeight: 'bolder' }}>{news[6].title}</Card.Title>
+                            <Card.Text style={{ fontSize: font }}>{news[6].description}</Card.Text>
                             <div className={classes.readFull}>
                                 <p style={{ fontSize: font - 3 }}>Read Full Article
                                     <a
-                                        href={news[4].url}
+                                        href={news[6].url}
                                         target="_blank"
-                                        onClick={() => { addResource(news[4], 'article'); }}
+                                        onClick={() => { addResource(news[6], 'article'); }}
                                     > Here</a>
                                 </p>
                             </div>
                             <IconButton
                                 onClick={() => {
-                                    addSaved(news[4], 'article');
+                                    addSaved(news[6], 'article');
                                     setIconColor5('rgb(251 58 139)');
                                 }}
                                 className={classes.saved}
@@ -257,7 +267,9 @@ const News = ({ addResource, discView, search, font, saved, addSaved }) => {
                         bg="light"
                         key={1000 * Math.random()}
                     >
-                        <Image src={news[5].urlToImage}
+                        <Image
+                            src={news[5].urlToImage}
+                            alt='No Image Available'
                             key={1000 * Math.random()}
                             className="news-img-top"
                             >

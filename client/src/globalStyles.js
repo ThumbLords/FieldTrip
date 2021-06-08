@@ -170,6 +170,10 @@ const GlobalStyles = createGlobalStyle`
       color: ${({ theme }) => theme.bodyBG};
       background-color: ${({ theme }) => theme.bodyText};
     }
+    .makeStyles-avatar-23{
+      color: ${({ theme }) => theme.bodyBG};
+      background-color: ${({ theme }) => theme.bodyText};
+    }
     .MuiSelect-icon{
       /* color: ${({ theme }) => theme.bodyText}; */
       color: #736BFB;

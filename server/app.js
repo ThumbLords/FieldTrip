@@ -97,8 +97,9 @@ const sortBy = 'relevance' //maybe give users the options: relevancy, popularity
 app.get('/newsQ/:search', (req, res) => {
 
     axios.get(`https://newsapi.org/v2/everything?q=${req.params.search}&apiKey=${newsKey}&sortBy=${sortBy}`)
-    .then(({data}) => {
-      res.status(200).send(data.articles.slice(0,9));
+    .then(({ data }) => {
+      const newsArray = data.articles.filter(article => article.author !== null);
+      res.status(200).send(newsArray.slice(0,9));
       console.log(req.params.search, 'SEARCH');
     })
     .catch((err) => {
