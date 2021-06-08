@@ -20,7 +20,7 @@ import AllInclusiveSharpIcon from '@material-ui/icons/AllInclusiveSharp';
 
 const categories = [
   { icon: <FlareSharpIcon />, name: 'Outer Space', theme: 'spaceTheme', searchTerm: 'cosmos|nasa|astrophysics' },
-  { icon: <EcoSharpIcon />, name: 'Planet Earth', theme: 'earthTheme', searchTerm: 'botany|pollination' },
+  { icon: <EcoSharpIcon />, name: 'Planet Earth', theme: 'earthTheme', searchTerm: 'botany' },
   { icon: <AccountBalanceSharpIcon />, name: 'Natural History', theme: 'historyTheme', searchTerm: 'geology|fossils' },
   { icon: <AllInclusiveSharpIcon />, name: 'General Science', theme: 'headerDefault', searchTerm: 'science|anthropology' },
 ];

@@ -11,12 +11,13 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import CameraAltSharpIcon from '@material-ui/icons/CameraAltSharp';
 import EmojiPeopleSharpIcon from '@material-ui/icons/EmojiPeopleSharp';
 import SearchSharpIcon from '@material-ui/icons/SearchSharp';
-import NotificationsSharpIcon from '@material-ui/icons/NotificationsSharp';
 import HomeSharpIcon from '@material-ui/icons/HomeSharp';
 import Divider from '@material-ui/core/Divider';
 
+import ArtTrackSharpIcon from '@material-ui/icons/ArtTrackSharp';
 
 
+// hello
 const bottomNavTheme = createMuiTheme({
     palette: {
         primary: {
@@ -80,9 +81,9 @@ const BottomNav = () => {
         <Divider className={classes.vertDiv} orientation="vertical" flexItem />
 
         <BottomNavigationAction
-          label="Alerts"
+          label="Timeline"
           value="alerts"
-          icon={<NotificationsSharpIcon fontSize="large" className='bottom-nav-icon' />}
+          icon={<ArtTrackSharpIcon fontSize="large" className='bottom-nav-icon' />}
           component={Link}
           to="/alerts"
         />

@@ -62,7 +62,7 @@ const Passport = ({stamps, badges}) => {
     <>
       {/* <Container className="stamp-container"> */}
       <div className="stamp-container">
-        <h3>Passport</h3>
+        <h3 style={{color: 'ghostwhite'}}>Passport</h3>
         {!stamps.length ?
         <p>Explore on the discovery tab to earn stamps!</p> :
         stamps.reverse().map((stamp, i) => <Stamp stamp={stamp} key={i}/>)}
