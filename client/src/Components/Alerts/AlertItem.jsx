@@ -22,7 +22,6 @@ const AlertContainer = styled(Container)`
 
 const AlertItem = ({alert, font}) => {
   return (
-    <div>
       <AlertContainer className='alert-container'>
         <div className="img-container">
           <img src={!alert.image ? Trophy : alert.image}/>
@@ -31,7 +30,6 @@ const AlertItem = ({alert, font}) => {
       {/* <p>{`You ${alert.action} a ${alert.resource}!`}</p> */}
         <p>{alert.date.slice(0, 10)}</p>
       </AlertContainer>
-    </div>
   );
 };
 

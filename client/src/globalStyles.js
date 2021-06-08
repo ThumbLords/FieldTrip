@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
   }
   //test
   header{
-    background: ${({ theme }) => theme.bodyBG};
+    background: ${({ theme }) => theme.headerBG};
     padding: 10px 10px;
     margin: 0;
     overflow: hidden;

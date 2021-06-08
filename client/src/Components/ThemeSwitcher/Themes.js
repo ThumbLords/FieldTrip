@@ -2,6 +2,7 @@ export const lightTheme = {
   bodyBG: 'ghostwhite',
   bodyText: 'rgb(9, 11, 23)',
   bottomNavBG: 'ghostwhite',
+  headerBG: '#eae4e9',
   bottomNavPrimaryIcon: 'rgb(9, 11, 23)',
   newsCardText: 'ghostwhite',
   newsCardBG: 'rgb(9, 11, 23)',
@@ -14,6 +15,7 @@ export const lightTheme = {
 export const darkTheme = {
   bodyBG: 'rgb(9, 11, 23)',
   bodyText: 'ghostwhite',
+  headerBG: 'rgb(9,11,23)',
   bottomNavBG: 'rgba(9,11,23, 0.92)',
   bottomNavPrimaryIcon: '#f8f8ff',
   newsCardText: '#070707',
