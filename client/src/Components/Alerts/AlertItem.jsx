@@ -4,8 +4,6 @@ import { Container } from 'react-bootstrap/';
 import Trophy from '../../assets/trophy.png';
 
 const AlertContainer = styled(Container)`
-    background:rgba(248, 248, 255, 0.6) !important;
-    color: rgb(9,11,23);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     margin: 1rem;
@@ -24,8 +22,7 @@ const AlertContainer = styled(Container)`
 
 const AlertItem = ({alert, font}) => {
   return (
-    <div>
-      <AlertContainer>
+      <AlertContainer className='alert-container'>
         <div className="img-container">
           <img src={!alert.image ? Trophy : alert.image}/>
         </div>
@@ -33,7 +30,6 @@ const AlertItem = ({alert, font}) => {
       {/* <p>{`You ${alert.action} a ${alert.resource}!`}</p> */}
         <p>{alert.date.slice(0, 10)}</p>
       </AlertContainer>
-    </div>
   );
 };
 

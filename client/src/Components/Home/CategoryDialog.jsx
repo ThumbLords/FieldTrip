@@ -119,7 +119,7 @@ const CategoryDialog = ({ theme, setTheme, discView, setDiscView, search, setSea
   return (
     <>
       <br />
-      <Button variant="text" color="secondary" onClick={handleClickOpen} style={{ color: 'whitesmoke' }}>
+      <Button variant="text" color="secondary" onClick={handleClickOpen} id='btn'>
         Categories
       </Button>
       <CategoryDialogBuilder selectedValue={selectedValue} open={open} onClose={handleClose} theme={selectedTheme} discView={discView} search={search} />

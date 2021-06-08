@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     display:"flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 }));
 
@@ -38,8 +38,6 @@ const useStyles = makeStyles((theme) => ({
   const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
-    // setAvatar(String(event.target.value) || avatarDefaultPurple);
-    // saveAvatar(String(event.target.value) || avatarDefaultPurple);
     setAvatar(String(event.target.value) || avatarDefaultGrey);
     saveAvatar(String(event.target.value) || avatarDefaultGrey);
   };
@@ -48,26 +46,26 @@ const useStyles = makeStyles((theme) => ({
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
+    console.log(event);
     setOpen(false);
   };
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen} style={{color: 'ghostwhite', margin: '15px auto', display: 'flex', backgroundColor: 'rgb(115, 107, 251, .75)', borderRadius: '10px', backdropFilter: 'blur(10px)'}}>Choose Your Avatar</Button>
+      {/* <Button variant="contained" onClick={handleClickOpen} className={['choose-avatar-btn', '.color-changing']}>Choose Your Avatar</Button> */}
+      <Button variant="contained" onClick={handleClickOpen} className='choose-avatar-btn'>Choose Your Avatar</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Select a New Avatar!</DialogTitle>
         <DialogContent>
           <form className={classes.container}>
             <FormControl className={classes.formControl}>
-              {/* <InputLabel htmlFor="demo-dialog-native" style={{color: 'ghostwhite', padding: '5px'}}>Avatars</InputLabel> */}
               <Select
-                style={{backgroundColor: 'rgb(9,11,23)', color: 'ghostwhite', opacity: '100%', borderRadius: '10px', boxShadow: '0px 0px 13px 1px ghostwhite'}}
-                // style={{borderRadius: '10px'}}
                 native
                 value={avatar}
                 onChange={handleChange}
                 input={<Input id="demo-dialog-native" />}
+                className='avatar-selector'
               >
                 <option aria-label="None" value=""/>
                 <option value={astro}>Astro Jelly</option>
@@ -80,10 +78,10 @@ const useStyles = makeStyles((theme) => ({
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} style={{color: 'ghostwhite'}}>
+          <Button onClick={handleClose} id='btn'>
             Cancel
           </Button>
-          <Button onClick={handleClose} style={{color: 'ghostwhite'}}>
+          <Button onClick={handleClose} id='btn'>
             Ok
           </Button>
         </DialogActions>

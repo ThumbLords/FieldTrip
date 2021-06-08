@@ -188,6 +188,12 @@ app.get('/auth/google/callback',
     });
   });
 
+  app.get('/category/:id', (req, res) => {
+    Users.findOne({ id: req.params.id }).then((userInfo) => {
+      res.send(userInfo.category);
+    });
+  });
+
   // removes duplicates from stamps array which contains both trophies and stamps
   const uniqueStamp = (array) => {
       //flags is stamp/challenge that we want
@@ -258,6 +264,15 @@ app.get('/auth/google/callback',
         })
   })
   })
+
+  // SAVE CATEGORY THEME TO USER
+  app.post('/category', (req, res) => {
+    const { theme } = req.body;
+    Users.findOne({ id: req.cookies.FieldTripId })
+      .then((user) => {
+        user.category = theme;
+      })
+  });
 
 
   // DAILY CHALLENGE- adds challenges to stamps
