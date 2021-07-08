@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 const CLIENT_PATH = path.resolve(__dirname, '../client/dist');
 const mongoose = require('mongoose');
 const axios = require('axios');
-// const { cloudinary } = require('./utils/cloudinary')
 require('./OAuth/passport.js');
 require('dotenv').config()
 
@@ -16,7 +15,7 @@ require('dotenv').config()
 require('../server/database/index.js');
 const { Users, Resources, Badges } = require('../server/database/schema.js');
 
-
+//EXPRESS
 const app = express();
 app.use(express.json({ limit: '50mb'}));
 app.use('/', express.static(CLIENT_PATH));
@@ -33,6 +32,7 @@ const youTubeKey = process.env.YOUTUBE_KEY;
 
 let userInfo = null;
 
+//CLOUDINARY CONFIG
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -41,14 +41,7 @@ cloudinary.config({
 
 })
 
-// const youtubeApi = process.env.YOUTUBE_API_KEY;
-
-//AXIOS ALL SIMULTANEOUS SEARCH
-
-// const smith = `https://api.si.edu/openaccess/api/v1.0/search?q=${smithQ}&api_key=${smithKey}`;
-
 //YOUTUBE
-
 app.get('/youTube/:query', (req, res) => {
   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${req.params.query}documentary&type=video&videoDuration=medium&key=${youTubeKey}`;
   return axios(url)
@@ -57,12 +50,11 @@ app.get('/youTube/:query', (req, res) => {
     .catch();
 });
 
-
+//NASA QUERY PIC
 // NASA PotD - return title, url, explanation (SOMETIMES VIDEO)
 const nasaPotD = `https://api.nasa.gov/planetary/apod?api_key=${nasaKey}`;
 
 app.get('/nasaPic', (req, res) => {
-
     axios.get(nasaPotD)
     .then(({data: {title, url, explanation}}) =>{
       res.status(200).send({title, url, explanation});
@@ -72,15 +64,11 @@ app.get('/nasaPic', (req, res) => {
     });
 });
 
-//NASA QUERY PIC
-
 //SMITHSONIAN SEARCH - *very little documentation on API*
-
 const smithQ = 'iris';  //hard search data, will change once front end
 const smith = `https://api.si.edu/openaccess/api/v1.0/search?q=${smithQ}&api_key=${smithKey}`;
 
 app.get('/smithQ/:search', (req, res) => {
-
     axios.get(smith)
     .then(({data}) =>{
       res.status(200).send({data});
@@ -90,7 +78,6 @@ app.get('/smithQ/:search', (req, res) => {
     });
 });
 
-// const newsQ = 'the lost cosmonauts';
 const sortBy = 'relevance' //maybe give users the options: relevancy, popularity, publishedAt
 // const news = `https://newsapi.org/v2/everything?q=${newsQ}&apiKey=${newsKey}&sortBy=${sortBy}`;
 
@@ -128,7 +115,7 @@ app.get('/challenge', (req, res) => {
   });
 })
 
-//OAUTH STUFF
+//PASSPORT/OAUTH
 app.use(
   session({
     secret: process.env.GOOGLE_CLIENT_SECRET,
@@ -146,6 +133,7 @@ passport.deserializeUser((user, done) => {
 });
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['email', 'profile'] }));
+//When user is authenticated
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/logout' }),
     (req, res) => {
@@ -168,6 +156,7 @@ app.get('/auth/google/callback',
     },
   );
 
+  //GET CURRENT USER INFO
   app.get('/user', (req, res) => {
     Users.findOne({ id: req.cookies.FieldTripId }).then((userInfo) => {
       res.send(userInfo);
@@ -183,6 +172,7 @@ app.get('/auth/google/callback',
     });
   });
 
+  //GET SAVED ARRAY FROM USER DOCUMENT
   app.get('/saved/:id', (req, res) => {
     Users.findOne({ id: req.params.id }).then((userInfo) => {
       res.send(userInfo.saved);
@@ -217,29 +207,13 @@ app.get('/auth/google/callback',
           output.push(stamp[j]);
         }
       output = output.filter(item => item !== null);
-      // console.log('output', output)
       return output;
   };
 
-  //RESOURCES GET REQUEST FOR BADGES
-
-  // app.get('/resource', (req, res) => {
-  //   Users.findOne({ id: req.cookies.FieldTripId })
-  //   .then((stamps) => {
-  //     res.send(stamps);
-  //   })
-  //   .then((badgeInfo)=> {
-  //     Resources.find({badeInfo}) => {
-
-
-  //   };
-  // });
-
-  //post request -add resource to resource schema
+  //POST request -add resource to resource schema
   app.post('/resource', (req, res) => {
     const {category, date, title, author, image, url, type } = req.body;
     // console.log('req body', req.body)
-
     Users.findOne({ id : req.cookies.FieldTripId })
     .then((user) => {
       userInfo = user;
@@ -303,7 +277,6 @@ app.post('/challenge', (req, res) => {
     })
 });
 
-
 // SAVED/FAVORITES/READorWATCH LATER
 app.post('/saved', (req, res) => {
   const { category, date, title, author, image, url, type } = req.body;
@@ -329,18 +302,15 @@ app.delete('/delete', (req, res) => {
 });
 
 
-//SPOTIFY
-
-
-
+//LOGOUT and clear cookies
   app.get('/logout', (req, res) => {
     userInfo = null;
     res.clearCookie('FieldTripId');
     res.status(200).json(userInfo);
   });
 
-  //CLOUDINARY
-
+//CLOUDINARY
+//POST images
   app.post('/api/upload', async (req, res) => {
     try {
       const fileStr = req.body.data;
@@ -356,9 +326,9 @@ app.delete('/delete', (req, res) => {
       res.status(500).json({err: 'something wrong!'})
     }
   })
-
+//GET images
   app.get('/api/images', async (req, res) => {
-    console.log('YOU MADE IT TO IMAGE UPLOAD')
+    // console.log('YOU MADE IT TO IMAGE UPLOAD')
     try{
       const {resources} = await cloudinary.search.expression('folder:testImages/*')
         .sort_by('public_id', 'desc')
@@ -366,7 +336,7 @@ app.delete('/delete', (req, res) => {
         .execute();
 
         const publicIds = resources.map( file => {
-          console.log('----file------', file)
+          // console.log('----file------', file)
           return {public_id: file.public_id, etag: file.etag}});
         res.status(200).json(publicIds);
     } catch(error) {
@@ -375,7 +345,7 @@ app.delete('/delete', (req, res) => {
     }
   })
 
-  //avatar
+  //AVATAR
   app.post('/avatar/:id', (req, res) => {
     const { avatar } = req.body;
 

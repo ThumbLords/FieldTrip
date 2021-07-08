@@ -49,7 +49,6 @@ const PhotoUpload = ({font}) => {
   const [previewSource, setPreviewSource] = useState();
   const [images, setImages] = useState();
   const [clicked, setClicked] = useState(false);
-  // const [loaded, setLoaded] = useState(false);
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -90,39 +89,26 @@ const PhotoUpload = ({font}) => {
     }
   }
 
-
-    // const loadImages = () => {
-    //   axios.get('/api/images')
-    //   .then(({data}) => {
-    //     let result = filterImages(data)
-    //     console.log('UPLOAD IMAGE DATA', result);
-    //     setImages(result);
-    //   })
-    //     .catch ((error) => {
-    //     console.log('image upload threw an error:', error)
-    //   })
-    // }
-
-    const loadImages = async () => {
-      try {
-        const result = await axios.get('/api/images');
-        const data = await result.data;
-        const res = filterImages(data);
-        setImages(res);
-        // setLoaded(!loaded);
-        console.log('res from load image', res)
-      }
-      catch (err) {
-        console.log(err);
-      }
+  const loadImages = async () => {
+    try {
+      const result = await axios.get('/api/images');
+      const data = await result.data;
+      const res = filterImages(data);
+      setImages(res);
+      // setLoaded(!loaded);
+      console.log('res from load image', res)
     }
-
-const filterImages = (images) => {
-  //filter images before map
-  if(images){
-   return images.filter((v,i,a)=>a.findIndex(t=>(t.etag === v.etag))===i)
+    catch (err) {
+      console.log(err);
+    }
   }
-};
+
+  const filterImages = (images) => {
+    //filter images before map
+    if(images){
+    return images.filter((v,i,a)=>a.findIndex(t=>(t.etag === v.etag))===i)
+    }
+  };
 
   useEffect(()=> {
     console.log('click photo upload', clicked);

@@ -13,10 +13,8 @@ const ImageLibraryContainer = styled.div`
   margin: 1rem 1rem;
   justify-content: center;
   align-items: flex-start;
-
 }
   img{
-    /* display: block; */
     border-radius: 10px;
     width: auto;
     height: 300px;
@@ -34,14 +32,14 @@ const ImageLibraryContainer = styled.div`
     margin-top: 1rem;
   }
 `
-
+/**
+ * TO DO
+ * Determine why image is not loading into image library until refresh
+ * - Look at timing and error messages
+ *
+ */
 
 const ImageLibrary = ({images, setImages, loadImages, clicked}) => {
-  console.log('click', clicked);
-  // useEffect(()=> {
-  //   //loadImages();
-  // }, [clicked])
-
   return(
     <ImageLibraryContainer>
       <h3>Community Photo Board</h3>

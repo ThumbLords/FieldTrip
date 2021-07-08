@@ -39,13 +39,11 @@ const Img = styled.div`
   }
 `
 const Profile = ({user, getStamps, stamps, getBadges, badges}) => {
-  // const [avatar, setAvatar] = useState(avatarDefaultPurple)
   const [avatar, setAvatar] = useState(avatarDefaultGrey)
 
   const getAvatar = () => {
     axios.get(`/avatar/${user.id}`)
     .then(({data}) => {
-      // setAvatar(data || avatarDefaultPurple);
       setAvatar(data || avatarDefaultGrey);
     })
   }
@@ -56,7 +54,6 @@ const Profile = ({user, getStamps, stamps, getBadges, badges}) => {
         getAvatar();
       })
       .catch();
-
   }
 
 
@@ -71,7 +68,6 @@ const Profile = ({user, getStamps, stamps, getBadges, badges}) => {
         <Img>
           <img src={avatar} alt="Avatar"/>
         </Img>
-        {/* <h3 style={{ background: 'transparent', backdropFilter: 'blur(7px)', padding: '0.25rem', borderRadius: '90px', width: 'fit-content', height: 'auto', marginTop: '0.5rem' }}>{user.name}</h3> */}
         <h3>{user.name}</h3>
       </div>
       <DialogSelectAvatar setAvatar={setAvatar} saveAvatar={saveAvatar}/>

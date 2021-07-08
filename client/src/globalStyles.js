@@ -13,7 +13,6 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.bodyText};
     height: 100vh;
   }
-  //test
   header{
     background: ${({ theme }) => theme.headerBG};
     padding: 10px 10px;
@@ -73,7 +72,6 @@ const GlobalStyles = createGlobalStyle`
     box-shadow: 0px 0px 7px 0px #736bfb
   }
   .bottom-nav-icon{
-    /* background: ${({ theme }) => theme.bodyText}; */
     color: ${({ theme }) => theme.bottomNavPrimaryIcon};
   }
   .logo{
@@ -175,7 +173,6 @@ const GlobalStyles = createGlobalStyle`
       background-color: ${({ theme }) => theme.bodyText};
     }
     .MuiSelect-icon{
-      /* color: ${({ theme }) => theme.bodyText}; */
       color: #736BFB;
     }
     .choose-avatar-btn {
@@ -207,7 +204,6 @@ const GlobalStyles = createGlobalStyle`
     .access-ctrl {
       font-size: large;
       color: ${({ theme }) => theme.accessBtn};
-      /* background: ghostwhite; */
       background: ${({ theme }) => theme.access};
       :hover{
         background: ${({ theme }) => theme.access};
@@ -217,27 +213,6 @@ const GlobalStyles = createGlobalStyle`
       background-color: ${({ theme }) => theme.stampContainer};
       color: ${({ theme }) => theme.alertText};
     }
-    /* .color-changing{
-      font-size: 1rem;
-      font-weight: 600;
-      color: ghostwhite;
-      text-align: center;
-      width: 200px;
-      height: 60px;
-      border-radius: 10px;
-      overflow: hidden;
-      background-image: linear-gradient(135deg, #FBFBFB 0%, #BFB3FB 38%, #736BFB 100%);
-      background-size: 400% 400%;
-      animation: transitioningBackground 10s ease infinite;
-      transition: 0.6s;
-
-      :hover{
-        background-image: linear-gradient(to bottom, #FF00DD 0%, #B254FB 50%, #736BFB 100%);
-        width: 215px;
-        height: 75px;
-        cursor: pointer;
-      }
-    } */
 
     @keyframes transitioningBackground {
       0% {

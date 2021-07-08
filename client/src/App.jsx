@@ -62,7 +62,6 @@ const App = () => {
     const [badges, setBadges] = useState([]);
     const [stepperCount, setStepperCount] = useState(0);
     const [ systemTheme, themeToggler, mountedComponent ] = useDarkMode();
-    // const [nasaPic, setNasaPic] = useState();
 
     const earthThemes = [veryGreen, contrast, landAndSea, treetopsAbove, forest, treetopsBelow, leafBorder, earth];
     const historyThemes = [columns, dinos, coliseum, dinoBones];
@@ -130,35 +129,6 @@ const App = () => {
     }
   };
 
-  // const getNasaPic = () => {
-  //   if (discView === 'Outer Space') {
-  //     axios.get('/nasaPic')
-  //     .then(({ data }) => {
-
-  //       const { explanation, title, url } = data;
-  //       // console.log('NASA FOTD', explanation, title, url);
-  //       setNasaPic(url);
-  //     })
-  //     .catch();
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getNasaPic();
-  // }, [discView]);
-
-//cloudinary
-// const loadImages = () => {
-//   axios.get('/images')
-//   .then(({data}) => {
-//     console.log('UPLOAD IMAGE DATA', data);
-//     setImageIds(data);
-//   })
-//     .catch (error) {
-//     console.log(error)
-//   }
-// }
-
   const addResource = (resource, resType) => {
     let pars = {};
     //if resource is article:
@@ -205,7 +175,6 @@ const App = () => {
     }
   };
 
-
   const getSaved = () => {
     if (user) {
       axios.get(`/saved/${user.id}`)
@@ -221,7 +190,6 @@ const App = () => {
     if (user) {
       axios.get(`/user/${user.id}`)
         .then(({ data }) => {
-          // console.log('BADGES DATA', data)
           setBadges(data);
         })
         .catch();
@@ -247,7 +215,6 @@ const App = () => {
         category: discView,
         date: Date.now,
         title: resource.snippet.title,
-        // author: null,
         image: resource.snippet.thumbnails.high.url,
         url: `https://www.youtube.com/embed/${resource.id.videoId}`,
         userId: user.id,
@@ -279,17 +246,6 @@ const App = () => {
       .catch();
   };
 
-  //  const getAlerts = () => {
-  //   //  debugger;
-  //   if (user) {
-  //     axios.get(`/user/${user.id}`)
-  //       .then(({ data }) => {
-  //         console.log('FROM Alerts', data)
-  //         setAlerts(data);
-  //       })
-  //       .catch();
-  //   }
-  // };
   const logout = () => {
     axios.get('/logout').then(() => {
       setUser(null);
@@ -315,10 +271,8 @@ const App = () => {
         <ThemeProvider theme={themeMode}>
            <GlobalStyles/>
           <AppBarHeader user={user} logout={logout} discView={discView} setDiscView={setDiscView} theme={theme} setTheme={setTheme} search={search} setSearch={setSearch} setStepperCount={setStepperCount} themeLength={themeLength} systemTheme={systemTheme} toggleTheme={themeToggler}/>
-        {/* </ThemeProvider> */}
           {!user
           ?(
-            // <ThemeProvider theme={themeMode}>
             <div >
               <Home />
               <Button variant="contained" style={{top: '0.25rem', right: '0.25rem', position: 'absolute' }}>
@@ -330,7 +284,6 @@ const App = () => {
               </a>
               </Button>
             </div>
-            // </ThemeProvider>
           )
             : (
               <Router>

@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 
   return (
     <div>
-      {/* <Button variant="contained" onClick={handleClickOpen} className={['choose-avatar-btn', '.color-changing']}>Choose Your Avatar</Button> */}
       <Button variant="contained" onClick={handleClickOpen} className='choose-avatar-btn'>Choose Your Avatar</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Select a New Avatar!</DialogTitle>
