@@ -25,7 +25,6 @@ const Img = styled.div`
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
 }
 
 .flip-card:hover .flip-card-inner {
@@ -51,7 +50,6 @@ const Img = styled.div`
   border-radius: 10px;
   transform: rotateY(180deg);
   width: fit-content;
-  /* height: auto; */
   min-height: 100%;
   text-align: center;
   padding: 10px 0;
@@ -98,13 +96,14 @@ const Stamp = ({stamp}) => {
       return "You watched a documentary about General Science!"
 
 }}
-//newpush
+
   return (
       <Img>
       {stamp.category !== "daily challenge" ?
         <div className="flip-card">
           <div className="flip-card-inner">
             <div className="flip-card-front">
+              {/* <img src={stamp.image} alt="stamp" /> */}
               <img src={stamp.image || defaultStamp} alt="stamp" />
             </div>
             <div className="flip-card-back active-card">
@@ -115,7 +114,6 @@ const Stamp = ({stamp}) => {
                 <p>{docMessage(stamp.category)}<br/><br/> <i>{stamp.title.slice(0, 70)}</i>...<br/><br/></p> :
                 <p>You listened to a podcast!</p>
               }
-
             </div>
           </div>
         </div>
@@ -134,17 +132,6 @@ const Stamp = ({stamp}) => {
             </div>
           </div>
         </div>
-      //   :
-      //   <div className="flip-card">
-      //   <div class="flip-card-inner">
-      //     <div class="flip-card-front">
-      //       <img src={stampImg}/>
-      //     </div>
-      //     <div class="flip-card-back">
-      //       <p>You earned a new stamp!</p>
-      //     </div>
-      //   </div>
-      // </div>
       }
       </Img>
   )
